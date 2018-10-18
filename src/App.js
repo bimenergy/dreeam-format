@@ -101,6 +101,7 @@ class App extends Component {
   }
 
   handleSelectEntity = entity => {
+    window.scrollTo(0, 0);
     this.setState({
       selectedEntity: this.state.selectedEntity === entity ? rootSchema : entity,
     });
