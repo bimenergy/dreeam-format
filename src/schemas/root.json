@@ -1,0 +1,100 @@
+{
+  "$id": "root",
+  "title": "DREEAM format v0.1",
+  "description": "A building stock repository data model used for energy measure scenarios",
+  "properties": {
+    "buildings": {
+      "type": "array",
+      "items": {
+        "$ref": "building"
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "$ref": "alternative"
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "scenario"
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "project"
+      }
+    },
+    "resourceList": {
+      "$ref": "resourceList"
+    }
+  },
+  "definitions": {
+    "project": {
+      "$id": "project",
+      "title": "Project",
+      "type": "object"
+    },
+    "scenario": {
+      "$id": "scenario",
+      "title": "Scenario",
+      "type": "object",
+      "properties": {
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "alternative"
+          }
+        }
+      }
+    },
+    "building": {
+      "$ref": "building"
+    },
+    "alternative": {
+      "$id": "alternative",
+      "title": "Alternative",
+      "allOf": [
+        {
+          "$ref": "building"
+        },
+        {
+          "properties": {
+            "originalBuildingId": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "resourceList": {
+      "$id": "resourceList",
+      "title": "Resource List",
+      "type": "object",
+      "properties": {
+        "constructions": {
+          "type": "array",
+          "items": {
+            "$ref": "construction"
+          }
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "$ref": "material"
+          }
+        }
+      }
+    },
+    "construction": {
+      "$id": "construction",
+      "title": "Construction",
+    },
+    "material": {
+      "$id": "material",
+      "title": "Material",
+    }
+  }
+}

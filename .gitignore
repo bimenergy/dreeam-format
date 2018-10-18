@@ -1,0 +1,17 @@
+# Mac
+.DS_Store
+.DS_Store?
+
+# Node
+npm-debug.log
+node_modules/
+
+# Jest
+coverage/
+
+# MongoDB
+data/
+
+# Production
+dist/
+browserified.js

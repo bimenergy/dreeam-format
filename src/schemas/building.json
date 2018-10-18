@@ -1,0 +1,303 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "building",
+  "title": "Building",
+  "description": "Building description",
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "$id": "attributes",
+      "title": "Building Attributes",
+      "type": "object",
+      "description": "Description of the attributes object",
+      "properties": {
+        "name": {
+          "type": "string",
+        },
+        "description": {
+          "type": "string",
+        },
+        "creationDate": {"type": "string", "format": "date"},
+        "terminationDate": {"type": "string", "format": "date"},
+        "class": {"type": "string"},
+        "function": {"type": "string"},
+        "usage": {"type": "string"},
+        "measuredHeight": { "type": "number"},
+        "roofType": { "type": "string"},
+        "storeysAboveGround": {
+          "type": "integer",
+          "description": "List order for storey heights above ground: first floor, second floor,...",
+        },
+        "storeysBelowGround": {
+          "type": "integer",
+          "description": "List order for storey heights above ground: first floor below ground, second floor below ground,... ",
+        },
+        "storeyHeightsAboveGround": { 
+          "type": "array",
+          "items": {"type": "number"}
+        },
+        "storeyHeightsBelowGround": { 
+          "type": "array",
+          "items": {"type": "number"}
+        },
+        "yearOfConstruction": { "type": "integer"},
+        "yearOfDemolition": { "type": "integer"},
+        "buildingType": {
+          "type": "string",
+        },
+        "constructionWeight": {
+          "$id": "constructionWeight",
+          "title": "Construction weight",
+          "description": "Enumeration for the construction weight",
+          "type": "string",
+          "enum": [
+            "veryLight",
+            "light",
+            "medium",
+            "heavy"
+          ]
+        },
+        "energyPerformanceCertification": {
+          "type": "string",
+        },
+        "volume": {
+          "type": "number",
+        },
+        "isLandmarked": {
+          "type": "string",
+        },
+        "referencePoint": {
+          "type": "string",
+        },
+        "refurbishmentMeasure": {
+          "type": "string",
+        },
+        "floorArea": {
+          "type": "string",
+        },
+        "heightAboveGround": {
+          "type": "string",
+        },
+      }
+    },
+    "spaces": {
+      "type": "array",
+      "items": {
+        "$ref": "space"
+      },
+      "default": []
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "$ref": "surface"
+      },
+      "default": []
+    },
+    "buildingStoreys": {
+      "type": "array",
+      "items": {
+        "$ref": "buildingStorey"
+      },
+      "default": []
+    }
+  },
+  "definitions": {
+    "buildingStorey": {
+      "title": "Building Storey",
+      "$id": "buildingStorey",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "level": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "planarGeometry": {
+          "$ref": "#/definitions/planarGeometry"
+        }
+      }
+    },
+    "surface": {
+      "title": "Surface",
+      "$id": "surface",
+      "description": "Explain me please!!!",
+      "type": "object",
+      "required": [
+        "surfaceType"
+      ],
+      "properties": {
+        "constructionIdRef": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{24}$"
+        },
+        "id": {
+          "type": "string"
+        },
+        "surfaceType": {
+          "type": "string",
+          "enum": [
+            "InteriorWall",
+            "ExteriorWall",
+            "Roof",
+            "InteriorFloor",
+            "ExposedFloor",
+            "Shade",
+            "UndergroundWall",
+            "UndergroundSlab",
+            "Ceiling",
+            "Air",
+            "UndergroundCeiling",
+            "RaisedFloor",
+            "SlabOnGrade",
+            "FreestandingColumn",
+            "EmbeddedColumn"
+          ]
+        },
+        "exposedToSun": {
+          "type": "boolean"
+        },
+        "adjacentSpaceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "planarGeometry": {
+          "$ref": "#/definitions/planarGeometry"
+        },
+        "glazing": {
+          "type": "integer"
+        },
+        "area": {
+          "type": "number"
+        },
+        "openings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/opening"
+          },
+          "default": []
+        }
+      }
+    },
+    "opening": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "coordinatesAbsolute": {
+          "type": "boolean"
+        },
+        "openingType": {
+          "type": "string",
+          "enum": [
+            "FixedWindow",
+            "NonSlidingDoor",
+            "OperableWindow",
+            "FixedSkylight",
+            "OperableSkylight",
+            "SlidingDoor",
+            "Air"
+          ]
+        },
+        "constructionIdRef": {
+          "type": "string"
+        },
+        "ifcGUID": {
+          "type": "string"
+        },
+        "planarGeometry": {
+          "$ref": "#/definitions/planarGeometry"
+        }
+      }
+    },
+    "planarGeometry": {
+      "description": "Explain me please!!!",
+      "type":"array",
+      "items": {
+        "type": "array",
+        "items": {
+          "minItems": 3,
+          "maxItems": 3,
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "spaceBoundary": {
+      "type": "object",
+      "description": "Space boundary is information on what is connected to a space.",
+      "properties": {
+        "surfaceIdRef": {
+          "type": "string",
+          "description": "Any format/pattern as long as string"
+        },
+        "area": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "planarGeometry": {
+          "$ref": "#/definitions/planarGeometry"
+        }
+      }
+    },
+    "space": {
+      "type": "object",
+      "title": "Space",
+      "$id": "space",
+      "description": "A space represents a volume enclosed by surfaces.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "buildingStoryIdRef": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{24}$"
+        },
+        "zoneIdRef": {
+          "type": "string"
+        },
+        "spaceBoundaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/spaceBoundary"
+          }
+        },
+        "planarGeometry": {
+          "$ref": "#/definitions/planarGeometry"
+        },
+        "area": {
+          "type": "number"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "volume": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
