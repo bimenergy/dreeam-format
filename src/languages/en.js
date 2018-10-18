@@ -1,6 +1,15 @@
 /* eslint-disable quotes, quote-props */
 export default {
   doc: {
+    root: `The root entity describes the stock repository itself, which could be thought of as one or several databases.
+      The format will emerge slowly towards maturity and changes will be inevitable. The formats that are followed are primarily:
+      CityGML and the Energy ADE for overall structure and lower level of detailed data. A good graphical overview can be found at
+      https://github.com/cstb/citygml-energy/blob/master/doc/UML-Diagrams_Energy-ADE.pdf. gbXML and IFC are used at higher level of
+      detail to improve compatibility with the BIM domain. The DREEAM format is highly opinionated and primarily used as an
+      unambiguous representation of data to be used internally at application level, yet enable import and export of open standard
+      formats which often fail to be suitable for application development due to high flexibility and complexity. Links to documentations
+      of gbXML: http://www.gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html and IFC: http://www.buildingsmart-tech.org/ifc/IFC4/final/html/
+      (and version 2x3: http://www.buildingsmart-tech.org/ifc/IFC2x3/TC1/html/index.htm)`,
     building: `The building is a central entity in the DREEAM format and follows several 
       descriptions from open formats, such as CityGML, IFC, gbXML.
       The attributes object is used as the most simple bearer of information of a building, and is complemented
