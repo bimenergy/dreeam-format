@@ -18,18 +18,29 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
+function generateNomnomlTitle(title, id, type) {
+  return `${title} (${id}):${type}`;
+}
+
 // refactor!
 function generateNomnomlFromSchemaEntity(entity, schemaMap) {
-  let result = `[${entity.title}: ${entity.type}]`;
+  const title = generateNomnomlTitle(entity.title, entity.$id, entity.type);
+  let result = `[${title}]`;
   if (entity.enum) {
     const enumString = entity.enum.join(';');
-    result += `\n[${entity.title}: ${entity.type}]-[${entity.title} Enumeration|${enumString}]`;
+    result += `\n[${title}]-[${entity.title} Enumeration|${enumString}]`;
   }
-  if (!entity.properties) {
+  let properties;
+  if (entity.properties) {
+    properties = entity.properties; // eslint-disable-line
+  } else if (entity.allOf && entity.allOf.find(a => a.properties)) {
+    properties = entity.allOf.find(a => a.properties).properties; // eslint-disable-line
+  }
+  if (!properties) {
     return result;
   }
-  const properties = Object.keys(entity.properties).reduce((memo, key) => {
-    const item = entity.properties[key];
+  const content = Object.keys(properties).reduce((memo, key) => {
+    const item = properties[key];
     if (item.type === 'array' && item.items && item.items.$ref) {
       const definition = schemaMap[item.items.$ref];
       if (definition) {
@@ -52,11 +63,11 @@ function generateNomnomlFromSchemaEntity(entity, schemaMap) {
     composites: [],
     attributes: [],
   });
-  result = `[${entity.title}|${properties.attributes.join(';')}]`;
-  properties.composites.forEach(c => {
+  result = `#direction:right\n[${title}|${content.attributes.join(';')}]`;
+  content.composites.forEach(c => {
     const min = c.minItems || 0;
     const max = c.maxItems || '*';
-    result += `\n[${entity.title}]- ${min}..${max}[${c.title}]`;
+    result += `\n[${title}]- ${min}..${max}[${generateNomnomlTitle(c.title, c.$id, c.type)}]`;
   });
   return result;
 }
@@ -92,7 +103,7 @@ class FormatEntityDisplay extends Component {
   renderPropertyDisplay(prop) {
     const { onSelectEntity, classes, t } = this.props;
     return (
-      <Paper key={prop.title} className={classes.propertyDisplay} elevation={1}>
+      <Paper key={prop.$id} className={classes.propertyDisplay} elevation={1}>
         <Typography variant="h5">{prop.title || prop.$id}</Typography>
         <Typography variant="body1">{`Property: ${prop.$id}`}</Typography>
         { prop.description && <Typography variant="body1">{`Short description: ${prop.description}`}</Typography> }
@@ -113,7 +124,18 @@ class FormatEntityDisplay extends Component {
   }
 
   render() {
-    const { classes, entity, t, schemaMap } = this.props;
+    const {
+      classes,
+      entity,
+      t,
+      schemaMap,
+    } = this.props;
+    let properties;
+    if (entity.properties) {
+      properties = entity.properties; // eslint-disable-line
+    } else if (entity.allOf && entity.allOf.find(a => a.properties)) {
+      properties = entity.allOf.find(a => a.properties).properties; // eslint-disable-line
+    }
     return (
       <div>
         <Typography className={classes.header} variant="h2" color="inherit" noWrap>{entity.title}</Typography>
@@ -125,16 +147,16 @@ class FormatEntityDisplay extends Component {
             this.canvas = canvas;
           }}
         />
-        { entity.properties && (
+        { properties && (
           <Typography variant="h5">{`Description of properties for ${entity.title}`}</Typography>
         )}
-        { entity.properties && Object.keys(entity.properties).map(key => {
-          const prop = entity.properties[key];
-          if (prop.$id && prop.type && prop.type === 'object') {
+        { properties && Object.keys(properties).map(key => {
+          const prop = properties[key];
+          if (prop.$id) {
             return this.renderPropertyDisplay(prop);
           } else if (prop.items && prop.items.$ref && schemaMap[prop.items.$ref]) {
             return this.renderPropertyDisplay(schemaMap[prop.items.$ref]);
-          } else if (prop.$ref) {
+          } else if (prop.$ref && schemaMap[prop.$ref]) {
             return this.renderPropertyDisplay(schemaMap[prop.$ref]);
           }
           return null;

@@ -23,44 +23,6 @@ import rootSchema from './schemas/root';
 import FormatEntityDisplay from './FormatEntityDisplay';
 import GitHubIcon from './GitHubIcon';
 
-// todo: move all this schema stuff to a store
-const schemas = [rootSchema, buildingSchema];
-function extractEntities(entities, entity) {
-  if (entity.properties) {
-    Object.keys(entity.properties).forEach(key => {
-      const prop = entity.properties[key];
-      if (prop.$id) {
-        entities.push(prop);
-        extractEntities(entities, prop);
-      }
-    });
-  }
-  if (entity.definitions) {
-    Object.keys(entity.definitions).forEach(key => {
-      const prop = entity.definitions[key];
-      if (prop.$id) {
-        entities.push(prop);
-        extractEntities(entities, prop);
-      }
-    });
-  }
-  return entities;
-}
-const mainSchemas = extractEntities([], rootSchema);
-const subSchemas = schemas.reduce((memo, s) => {
-  extractEntities(memo, s);
-  return memo;
-}, []);
-const divider1 = { type: 'divider', key: 'divider-1' };
-const mainEntities = [...schemas, ...mainSchemas, divider1];
-const subEntities = subSchemas;
-const schemaMap = [...schemas, ...subSchemas].reduce((memo, schema) => {
-  if (schema.$id) {
-    memo[schema.$id] = schema; // eslint-disable-line
-  }
-  return memo;
-}, {});
-
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -83,12 +45,72 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
+    overflow: 'auto',
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     minWidth: 0, // So the Typography noWrap works
   },
   toolbar: theme.mixins.toolbar,
 });
+
+// todo: move all this schema stuff to a store
+const schemas = [rootSchema, buildingSchema];
+function extractEntities(entities, entity, properties, definitions, recursive) {
+  if (properties && entity.properties) {
+    Object.keys(entity.properties).forEach(key => {
+      const prop = entity.properties[key];
+      if (prop.$id) {
+        entities.push(prop);
+        if (recursive) {
+          extractEntities(entities, prop, properties, definitions, recursive);
+        }
+      }
+    });
+  } else if (entity.allOf) {
+    entity.allOf.forEach(a => {
+      if (a.properties && recursive) {
+        extractEntities(entities, a, properties, definitions, recursive);
+      }
+    });
+  }
+  if (definitions && entity.definitions) {
+    Object.keys(entity.definitions).forEach(key => {
+      const prop = entity.definitions[key];
+      if (prop.$id) {
+        entities.push(prop);
+        if (recursive) {
+          extractEntities(entities, prop, properties, definitions, recursive);
+        }
+      }
+    });
+  }
+  return entities;
+}
+const mainSchemas = [
+  rootSchema,
+  buildingSchema,
+  rootSchema.definitions.alternative,
+  rootSchema.definitions.scenario,
+  rootSchema.definitions.project,
+  rootSchema.definitions.resourceList,
+];
+const subSchemas = schemas.reduce((memo, s) => {
+  extractEntities(memo, s, true, true, true);
+  return memo;
+}, []);
+const divider1 = { type: 'divider', key: 'divider-1' };
+const mainEntities = [...mainSchemas, divider1];
+const subEntities = subSchemas.sort((a, b) => {
+  if (a.$id < b.$id) return -1;
+  if (a.$id > b.$id) return 1;
+  return 0;
+});
+const schemaMap = [...schemas, ...subSchemas].reduce((memo, schema) => {
+  if (schema.$id) {
+    memo[schema.$id] = schema; // eslint-disable-line
+  }
+  return memo;
+}, {});
 
 class App extends Component {
   state = {
@@ -122,7 +144,13 @@ class App extends Component {
           if (s.type === 'divider') {
             return <Divider key={s.key} />;
           }
-          const keys = Object.keys(s.properties || {}).filter(key => s.properties[key].$id);
+          let properties = {};
+          if (s.properties) {
+            properties = s.properties; // eslint-disable-line
+          } else if (s.allOf && s.allOf.find(a => a.properties)) {
+            properties = s.allOf.find(a => a.properties).properties; // eslint-disable-line
+          }
+          const keys = Object.keys(properties).filter(key => properties[key].$id);
           return (
             <div key={s.$id}>
               <ListItem
@@ -140,12 +168,12 @@ class App extends Component {
                         key={key}
                         button
                         className={classes.nested}
-                        onClick={() => this.handleSelectEntity(s.properties[key])}
+                        onClick={() => this.handleSelectEntity(properties[key])}
                       >
                         <ListItemText
                           inset
-                          primary={s.properties[key].title || s.properties[key].$id}
-                          secondary={s.properties[key].$id}
+                          primary={properties[key].title || properties[key].$id}
+                          secondary={properties[key].$id}
                         />
                       </ListItem>
                     ))}

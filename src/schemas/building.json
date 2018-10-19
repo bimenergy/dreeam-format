@@ -2,106 +2,570 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "building",
   "title": "Building",
-  "description": "Building description",
   "type": "object",
-  "properties": {
-    "attributes": {
-      "$id": "attributes",
-      "title": "Building Attributes",
-      "type": "object",
-      "description": "Description of the attributes object",
+  "allOf": [
+    { "$ref": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/geojson.json" },
+    {
       "properties": {
-        "name": {
-          "type": "string",
+        "geometry": {
+          "$id": "geometry",
+          "type": "object",
+          "title": "Geometry",
+          "description": "This is a simple geometry as described in GeoJson standard"
         },
-        "description": {
-          "type": "string",
+        "properties": {
+          "$id": "properties",
+          "title": "Building Properties",
+          "type": "object",
+          "description": "Description of the properties (CityGML: attributes) object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "$id": "name",
+              "title": "Name",
+              "description": "Any arbitrary name string for prepresenting the building as whole"
+            },
+            "description": {
+              "type": "string",
+              "$id": "description",
+              "title": "Description",
+              "description": "Any arbitrary description string for building as whole"
+            },
+            "buildingType": {
+              "$id": "buildingType",
+              "title": "Building Type",
+              "description": "Classification of building according with their usage and form",
+              "type": "string",
+            },
+            "class": {
+              "type": "string",
+              "$id": "class",
+              "title": "Class",
+              "description": "A code list or enumeration will be used for classification",
+              "enum": [
+                "habitation",
+                "sanitation",
+                "administration",
+                "business, trade",
+                "catering",
+                "recreation",
+                "sport",
+                "culture",
+                "church institution",
+                "agriculture, forestry",
+                "schools, education, research",
+                "maintainence and waste management",
+                "healthcare",
+                "communicating",
+                "security",
+                "storage",
+                "industry",
+                "traffic",
+                "function"
+              ]
+            },
+            "function": {
+              "type": "string",
+              "$id": "function",
+              "title": "Function",
+              "description": "A code list or enumeration will be used to describe the function of the building",
+              "enum": [
+                "residential building",
+                "tenement",
+                "hostel",
+                "residential- and administration building",
+                "residential- and office building",
+                "residential- and business building",
+                "residential- and plant building",
+                "agrarian- and forestry building",
+                "residential- and commercial building",
+                "forester's lodge",
+                "holiday house",
+                "summer house",
+                "office building",
+                "credit institution",
+                "insurance",
+                "business building",
+                "department store",
+                "shopping centre",
+                "kiosk",
+                "pharmacy",
+                "pavilion",
+                "hotel",
+                "youth hostel",
+                "campsite building",
+                "restaurant",
+                "cantine",
+                "recreational site",
+                "function room",
+                "cinema",
+                "bowling alley",
+                "casino",
+                "industrial building",
+                "factory",
+                "workshop",
+                "petrol / gas station",
+                "washing plant",
+                "cold store",
+                "depot",
+                "building for research purposes",
+                "quarry",
+                "salt works",
+                "miscellaneous industrial building",
+                "mill",
+                "windmill",
+                "water mill",
+                "bucket elevator",
+                "weather station",
+                "traffic assets office",
+                "street maintenance",
+                "waiting hall",
+                "signal control box",
+                "engine shed",
+                "signal box or stop signal",
+                "plant building for air traffic",
+                "hangar",
+                "plant building for shipping",
+                "shipyard",
+                "dock",
+                "plant building for canal lock",
+                "boathouse",
+                "plant building for cablecar",
+                "multi-storey car park",
+                "parking level",
+                "garage",
+                "vehicle hall",
+                "underground garage",
+                "building for supply",
+                "waterworks",
+                "pump station",
+                "water basin",
+                "electric power station",
+                "transformer station",
+                "converter",
+                "reactor",
+                "turbine house",
+                "boiler house",
+                "building for telecommunications",
+                "gas works",
+                "heat plant",
+                "pumping station",
+                "building for disposal",
+                "building for effluent disposal",
+                "building for filter plant",
+                "toilet",
+                "rubbish bunker",
+                "building for rubbish incineration",
+                "building for rubbish disposal",
+                "building for agrarian and forestry",
+                "barn",
+                "stall",
+                "equestrian hall",
+                "alpine cabin",
+                "hunting lodge",
+                "arboretum",
+                "glass house",
+                "moveable glass house",
+                "public building",
+                "administration building",
+                "parliament",
+                "guildhall",
+                "post office",
+                "customs office",
+                "court",
+                "embassy or consulate",
+                "district administration",
+                "district government",
+                "tax office",
+                "building for education and research",
+                "comprehensive school",
+                "vocational school",
+                "college or university",
+                "research establishment",
+                "building for cultural purposes",
+                "castle",
+                "theatre or opera",
+                "concert building",
+                "museum",
+                "broadcasting building",
+                "activity building",
+                "library",
+                "fort",
+                "religious building",
+                "church",
+                "synagogue",
+                "chapel",
+                "community center",
+                "place of worship",
+                "mosque",
+                "temple",
+                "convent",
+                "building for health care",
+                "hospital",
+                "healing centre or care home",
+                "health centre or outpatients clinic",
+                "building for social purposes",
+                "youth centre",
+                "seniors centre",
+                "homeless shelter",
+                "kindergarten or nursery",
+                "asylum seekers home",
+                "police station",
+                "fire station",
+                "barracks",
+                "bunker",
+                "penitentiary or prison",
+                "cemetery building",
+                "funeral parlor",
+                "crematorium",
+                "train station",
+                "airport building",
+                "building for underground station",
+                "building for tramway",
+                "building for bus station",
+                "shipping terminal",
+                "building for recuperation purposes",
+                "building for sport purposes",
+                "sports hall",
+                "building for sports field",
+                "swimming baths",
+                "indoor swimming pool",
+                "sanatorium",
+                "zoo building",
+                "green house",
+                "botanical show house",
+                "bothy",
+                "tourist information centre",
+                "others"
+              ]
+            },
+            "usage": {
+              "type": "string",
+              "$id": "usage",
+              "title": "Usage",
+              "description": "A code list will be used to describe usage of the building. This is a fallback for all thermal zones that lacks description on user behaviour",
+              "enum": [
+                "residential building",
+                "tenement",
+                "hostel",
+                "residential- and administration building",
+                "residential- and office building",
+                "residential- and business building",
+                "residential- and plant building",
+                "agrarian- and forestry building",
+                "residential- and commercial building",
+                "forester's lodge",
+                "holiday house",
+                "summer house",
+                "office building",
+                "credit institution",
+                "insurance",
+                "business building",
+                "department store",
+                "shopping centre",
+                "kiosk",
+                "pharmacy",
+                "pavilion",
+                "hotel",
+                "youth hostel",
+                "campsite building",
+                "restaurant",
+                "cantine",
+                "recreational site",
+                "function room",
+                "cinema",
+                "bowling alley",
+                "casino",
+                "industrial building",
+                "factory",
+                "workshop",
+                "petrol / gas station",
+                "washing plant",
+                "cold store",
+                "depot",
+                "building for research purposes",
+                "quarry",
+                "salt works",
+                "miscellaneous industrial building",
+                "mill",
+                "windmill",
+                "water mill",
+                "bucket elevator",
+                "weather station",
+                "traffic assets office",
+                "street maintenance",
+                "waiting hall",
+                "signal control box",
+                "engine shed",
+                "signal box or stop signal",
+                "plant building for air traffic",
+                "hangar",
+                "plant building for shipping",
+                "shipyard",
+                "dock",
+                "plant building for canal lock",
+                "boathouse",
+                "plant building for cablecar",
+                "multi-storey car park",
+                "parking level",
+                "garage",
+                "vehicle hall",
+                "underground garage",
+                "building for supply",
+                "waterworks",
+                "pump station",
+                "water basin",
+                "electric power station",
+                "transformer station",
+                "converter",
+                "reactor",
+                "turbine house",
+                "boiler house",
+                "building for telecommunications",
+                "gas works",
+                "heat plant",
+                "pumping station",
+                "building for disposal",
+                "building for effluent disposal",
+                "building for filter plant",
+                "toilet",
+                "rubbish bunker",
+                "building for rubbish incineration",
+                "building for rubbish disposal",
+                "building for agrarian and forestry",
+                "barn",
+                "stall",
+                "equestrian hall",
+                "alpine cabin",
+                "hunting lodge",
+                "arboretum",
+                "glass house",
+                "moveable glass house",
+                "public building",
+                "administration building",
+                "parliament",
+                "guildhall",
+                "post office",
+                "customs office",
+                "court",
+                "embassy or consulate",
+                "district administration",
+                "district government",
+                "tax office",
+                "building for education and research",
+                "comprehensive school",
+                "vocational school",
+                "college or university",
+                "research establishment",
+                "building for cultural purposes",
+                "castle",
+                "theatre or opera",
+                "concert building",
+                "museum",
+                "broadcasting building",
+                "activity building",
+                "library",
+                "fort",
+                "religious building",
+                "church",
+                "synagogue",
+                "chapel",
+                "community center",
+                "place of worship",
+                "mosque",
+                "temple",
+                "convent",
+                "building for health care",
+                "hospital",
+                "healing centre or care home",
+                "health centre or outpatients clinic",
+                "building for social purposes",
+                "youth centre",
+                "seniors centre",
+                "homeless shelter",
+                "kindergarten or nursery",
+                "asylum seekers home",
+                "police station",
+                "fire station",
+                "barracks",
+                "bunker",
+                "penitentiary or prison",
+                "cemetery building",
+                "funeral parlor",
+                "crematorium",
+                "train station",
+                "airport building",
+                "building for underground station",
+                "building for tramway",
+                "building for bus station",
+                "shipping terminal",
+                "building for recuperation purposes",
+                "building for sport purposes",
+                "sports hall",
+                "building for sports field",
+                "swimming baths",
+                "indoor swimming pool",
+                "sanatorium",
+                "zoo building",
+                "green house",
+                "botanical show house",
+                "bothy",
+                "tourist information centre",
+                "others"
+              ]
+            },
+            "measuredHeight": {
+              "$id": "measuredHeight",
+              "title": "Measured Height",
+              "type": "number",
+              "description": "A number representing the height in meters above ground"
+            },
+            "roofType": {
+              "$id": "roofType",
+              "type": "string",
+              "title": "Roof type",
+              "description": "An enumeration of roof types",
+              "enum": [
+                "flatRoof",
+                "monopitchRoof",
+                "dualPentRoof",
+                "gabledRoof",
+                "hippedRoof",
+                "half-hippedRoof",
+                "mansardRoof",
+                "pavilionRoof",
+                "coneRoof",
+                "copulaRoof",
+                "sawtoothRoof",
+                "archRoof",
+                "pyramidalBroachRoof",
+                "combinationOfRoofForms"
+              ]
+            },
+            "storeysAboveGround": {
+              "$id": "storeysAboveGround",
+              "title": "Storeys Above Ground",
+              "type": "number",
+              "description": "Number of storeys above ground"
+            },
+            "storeysBelowGround": {
+              "$id": "storeysBelowGround",
+              "title": "Storeys Below Ground",
+              "type": "number",
+              "description": "Number of storeys below ground"
+            },
+            "storeyHeightsAboveGround": {
+              "$id": "storeyHeightsAboveGround",
+              "title": "Storey Heights Above Ground",
+              "type": "array",
+              "items": {"type": "number"},
+              "description": "List order for storey heights above ground: first floor, second floor,...",
+            },
+            "storeyHeightsBelowGround": { 
+              "$id": "storeyHeightsBelowGround",
+              "title": "Storey Heights Below Ground",
+              "type": "array",
+              "description": "List order for storey heights below ground: first floor below ground, second floor below ground,... ",
+              "items": {"type": "number"}
+            },
+            "yearOfConstruction": {
+              "$id": "yearOfConstruction",
+              "title": "Year of Construction",
+              "description": "When the building was built, four digits",
+              "type": "integer"
+            },
+            "yearOfDemolition": {
+              "$id": "yearOfDemolition",
+              "title": "Year of Demolition",
+              "description": "For buildings that will remain in the system after demolished. Four digits",
+              "type": "integer",
+            },
+            "constructionWeight": {
+              "$id": "constructionWeight",
+              "title": "Construction Weight",
+              "description": "Enumeration for the construction weight",
+              "type": "string",
+              "enum": [
+                "veryLight",
+                "light",
+                "medium",
+                "heavy"
+              ]
+            },
+            "energyPerformanceCertification": {
+              "$id": "energyPerformanceCertification",
+              "type": "string",
+              "title": "Energy Performance Certification",
+              "description": "Energy Efficiency Rating",
+            },
+            "volume": {
+              "$id": "volume",
+              "title": "Volume",
+              "description": "Total volume delimited by the external building dimension",
+              "type": "number",
+            },
+            "isLandmarked": {
+              "$id": "isLandmarked",
+              "title": "Is landmarked?",
+              "description": "Landmark / heritage status of the building",
+              "type": "boolean",
+            },
+            "referencePoint": {
+              "$id": "referencePoint",
+              "title": "Reference Point",
+              "description": "Geographical location of the building",
+              "type": "string",
+            },
+            "floorArea": {
+              "$id": "floorArea",
+              "title": "Floor Area",
+              "description": "Heated floor area",
+              "type": "string",
+            }
+          }
         },
-        "creationDate": {"type": "string", "format": "date"},
-        "terminationDate": {"type": "string", "format": "date"},
-        "class": {"type": "string"},
-        "function": {"type": "string"},
-        "usage": {"type": "string"},
-        "measuredHeight": { "type": "number"},
-        "roofType": { "type": "string"},
-        "storeysAboveGround": {
-          "type": "integer",
-          "description": "List order for storey heights above ground: first floor, second floor,...",
-        },
-        "storeysBelowGround": {
-          "type": "integer",
-          "description": "List order for storey heights above ground: first floor below ground, second floor below ground,... ",
-        },
-        "storeyHeightsAboveGround": { 
+        "spaces": {
           "type": "array",
-          "items": {"type": "number"}
+          "items": {
+            "$ref": "space"
+          },
+          "default": []
         },
-        "storeyHeightsBelowGround": { 
+        "surfaces": {
           "type": "array",
-          "items": {"type": "number"}
+          "items": {
+            "$ref": "surface"
+          },
+          "default": []
         },
-        "yearOfConstruction": { "type": "integer"},
-        "yearOfDemolition": { "type": "integer"},
-        "buildingType": {
-          "type": "string",
+        "buildingStoreys": {
+          "type": "array",
+          "items": {
+            "$ref": "buildingStorey"
+          },
+          "default": []
         },
-        "constructionWeight": {
-          "$id": "constructionWeight",
-          "title": "Construction weight",
-          "description": "Enumeration for the construction weight",
-          "type": "string",
-          "enum": [
-            "veryLight",
-            "light",
-            "medium",
-            "heavy"
-          ]
+        "thermalZones": {
+          "type": "array",
+          "items": {
+            "$ref": "thermalZone"
+          }
         },
-        "energyPerformanceCertification": {
-          "type": "string",
+        "usageZones": {
+          "type": "array",
+          "items": {
+            "$ref": "usageZone"
+          }
         },
-        "volume": {
-          "type": "number",
-        },
-        "isLandmarked": {
-          "type": "string",
-        },
-        "referencePoint": {
-          "type": "string",
-        },
-        "refurbishmentMeasure": {
-          "type": "string",
-        },
-        "floorArea": {
-          "type": "string",
-        },
-        "heightAboveGround": {
-          "type": "string",
+        "refurbishmentMeasures": {
+          "type": "array",
+          "items": {
+            "$ref": "refurbishmentMeasure"
+          }
         },
       }
-    },
-    "spaces": {
-      "type": "array",
-      "items": {
-        "$ref": "space"
-      },
-      "default": []
-    },
-    "surfaces": {
-      "type": "array",
-      "items": {
-        "$ref": "surface"
-      },
-      "default": []
-    },
-    "buildingStoreys": {
-      "type": "array",
-      "items": {
-        "$ref": "buildingStorey"
-      },
-      "default": []
     }
-  },
+  ],
   "definitions": {
     "buildingStorey": {
       "title": "Building Storey",
@@ -128,7 +592,7 @@
     "surface": {
       "title": "Surface",
       "$id": "surface",
-      "description": "Explain me please!!!",
+      "description": "Surface is subset of the gbXML description of a surface",
       "type": "object",
       "required": [
         "surfaceType"
@@ -179,9 +643,6 @@
         "glazing": {
           "type": "integer"
         },
-        "area": {
-          "type": "number"
-        },
         "openings": {
           "type": "array",
           "items": {
@@ -192,6 +653,8 @@
       }
     },
     "opening": {
+      "$id": "opening",
+      "title": "Opening",
       "type": "object",
       "properties": {
         "id": {
@@ -224,7 +687,9 @@
       }
     },
     "planarGeometry": {
-      "description": "Explain me please!!!",
+      "$id": "planarGeometry",
+      "title": "Planar Geometry",
+      "description": "Multi-polygon geometry described in gbXML, except very much simplifed here",
       "type":"array",
       "items": {
         "type": "array",
@@ -239,6 +704,7 @@
       }
     },
     "spaceBoundary": {
+      "$id": "spaceBoundary",
       "type": "object",
       "description": "Space boundary is information on what is connected to a space.",
       "properties": {
@@ -298,6 +764,24 @@
           "type": "number"
         }
       }
-    }
+    },
+    "thermalZone": {
+      "$id": "thermalZone",
+      "title": "Thermal Zone",
+      "type": "object",
+      "description": "Primarily used for heating and cooling settings"
+    },
+    "usageZone": {
+      "$id": "usageZone",
+      "title": "Usage Zone",
+      "type": "object",
+      "description": "A usage zone is a zone of a building with homogeneous usage type"
+    },
+    "refurbishmentMeasure": {
+      "$id": "refurbishmentMeasure",
+      "title": "Refurbishment Measure",
+      "description": "Reference designation of the degree of refurbishment",
+      "type": "string",
+    },
   }
 }

@@ -1,5 +1,6 @@
 {
   "$id": "root",
+  "type": "object",
   "title": "DREEAM format v0.1",
   "description": "A building stock repository data model used for energy measure scenarios",
   "properties": {
@@ -56,6 +57,7 @@
     "alternative": {
       "$id": "alternative",
       "title": "Alternative",
+      "type": "object",
       "allOf": [
         {
           "$ref": "building"
@@ -85,16 +87,175 @@
           "items": {
             "$ref": "material"
           }
+        },
+        "heatPumps": {
+          "type": "array",
+          "items": {
+            "$ref": "heatPump"
+          }
+        },
+        "mechanicalVentilations": {
+          "type": "array",
+          "items": {
+            "$ref": "mechanicalVentilation"
+          }
+        },
+        "genericEnergyConversionSystems": {
+          "type": "array",
+          "items": {
+            "$ref": "genericEnergyConversionSystem"
+          }
+        },
+        "boilers": {
+          "type": "array",
+          "items": {
+            "$ref": "boiler"
+          }
+        },
+        "chillers": {
+          "type": "array",
+          "items": {
+            "$ref": "chiller"
+          }
+        },
+        "photovoltaicSystems": {
+          "type": "array",
+          "items": {
+            "$ref": "photovoltaicSystem"
+          }
+        },
+        "solarThermalSystems": {
+          "type": "array",
+          "items": {
+            "$ref": "solarThermalSystem"
+          }
+        },
+        "weatherScenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "weatherData"
+          }
         }
       }
     },
     "construction": {
       "$id": "construction",
       "title": "Construction",
+      "description": "Simple version with U-values, etc. or layered structure defining materials",
+      "type": "object",
+      "properties": {
+        "uValue": {
+          "$id": "uValue",
+          "type": "number",
+          "title": "U-Value"
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "layer"
+          }
+        }
+      }
     },
-    "material": {
-      "$id": "material",
+    "layer": {
+      "$id": "layer",
+      "title": "Layer",
+      "properties": {
+        "layerComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "layerComponent"
+          }
+        }
+      }
+    },
+    "layerComponent": {
+      "$id": "layerComponent",
+      "title": "Layer Component",
+      "properties": {
+        "solidMaterial": {
+          "$ref": "solidMaterial"
+        },
+        "thickness": {
+          "type": "number"
+        }
+      }  
+    },
+    "solidMaterial": {
+      "$id": "solidMaterial",
+      "type": "object",
       "title": "Material",
+      "properties": {
+        "conductivity": {
+          "type": "number"
+        },
+        "density": {
+          "type": "number"
+        }, 
+        "permeance": {
+          "type": "number"
+        },  
+        "porosity": {
+          "type": "number"
+        },  
+        "specificHeat": {
+          "type": "number"
+        },  
+        "embodiedCarbon": {
+          "type": "number"
+        },   
+        "embodiedEnergy": {
+          "type": "number"
+        } 
+      }
+    },
+    "heatPump": {
+      "$id": "heatPump",
+      "type": "object",
+      "title": "Heat pump",
+      "description": "A device that transfers heat from a colder area to a hotter area by using mechanical energy, as in a refrigerator",
+    },
+    "mechanicalVentilation": {
+      "$id": "mechanicalVentilation",
+      "type": "object",
+      "title": "Mechanical ventilation",
+      "description": "A building ventilation system that uses powered fans or blowers to provide fresh air to rooms when the natural forces of air pressure and gravity are not enough to circulate air through a building",
+    },
+    "genericEnergyConversionSystem": {
+      "$id": "genericEnergyConversionSystem",
+      "type": "object",
+      "title": "Generic Energy Conversion System",
+      "description": "Energy conversion system which cannot be represented by other energy conversion systems"
+    },
+    "boiler": {
+      "$id": "boiler",
+      "type": "object",
+      "title": "Boiler",
+      "description": "Closed vessel in which water is heated"
+    },
+    "chiller": {
+      "$id": "chiller",
+      "type": "object",
+      "title": "Chiller",
+      "description": "A machine that removes heat from a liquid via a vapour-compression or absorption refrigeration cycle"
+    },
+    "photovoltaicSystem": {
+      "$id": "photovoltaicSystem",
+      "type": "object",
+      "title": "Photovoltaic System",
+      "description": "System converting solar energy in electricity"
+    },
+    "solarThermalSystem": {
+      "$id": "solarThermalSystem",
+      "type": "object",
+      "title": "Solar Thermal System",
+      "description": "System converting solar energy in heat (hot water)"
+    },
+    "weatherData": {
+      "$id": "weatherData",
+      "type": "object",
+      "title": "Weater Data",
+      "description": "Data structure to model weather or climate data at the location of a building"
     }
   }
 }
