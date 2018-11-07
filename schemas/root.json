@@ -89,7 +89,7 @@
         "materials": {
           "type": "array",
           "items": {
-            "$ref": "material"
+            "$ref": "solidMaterial"
           }
         },
         "heatPumps": {
