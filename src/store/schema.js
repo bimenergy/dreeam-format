@@ -7,8 +7,8 @@ import {
 } from 'mobx';
 
 // schemas
-import buildingSchema from '../schemas/building';
-import rootSchema from '../schemas/root';
+import buildingSchema from '../../schemas/building';
+import rootSchema from '../../schemas/root';
 
 useStrict(true);
 

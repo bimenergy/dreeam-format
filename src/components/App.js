@@ -20,7 +20,7 @@ import IconButton from '@material-ui/core/IconButton';
 // local
 import FormatEntityDisplay from './FormatEntityDisplay';
 import GitHubIcon from './GitHubIcon';
-import rootSchema from '../schemas/root';
+import rootSchema from '../../schemas/root';
 
 const drawerWidth = 240;
 
