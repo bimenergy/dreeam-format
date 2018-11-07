@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 import { translate } from 'react-i18next';
 // Material-UI
 import { withStyles } from '@material-ui/core/styles';
@@ -16,12 +17,10 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-// schemas
-import buildingSchema from './schemas/building';
-import rootSchema from './schemas/root';
 // local
 import FormatEntityDisplay from './FormatEntityDisplay';
 import GitHubIcon from './GitHubIcon';
+import rootSchema from '../schemas/root';
 
 const drawerWidth = 240;
 
@@ -53,97 +52,24 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-// todo: move all this schema stuff to a store
-const schemas = [rootSchema, buildingSchema];
-function extractEntities(entities, entity, properties, definitions, recursive) {
-  if (properties && entity.properties) {
-    Object.keys(entity.properties).forEach(key => {
-      const prop = entity.properties[key];
-      if (prop.$id) {
-        entities.push(prop);
-        if (recursive) {
-          extractEntities(entities, prop, properties, definitions, recursive);
-        }
-      }
-    });
-  } else if (entity.allOf) {
-    entity.allOf.forEach(a => {
-      if (a.properties && recursive) {
-        extractEntities(entities, a, properties, definitions, recursive);
-      }
-    });
-  }
-  if (definitions && entity.definitions) {
-    Object.keys(entity.definitions).forEach(key => {
-      const prop = entity.definitions[key];
-      if (prop.$id) {
-        entities.push(prop);
-        if (recursive) {
-          extractEntities(entities, prop, properties, definitions, recursive);
-        }
-      }
-    });
-  }
-  return entities;
-}
-const mainSchemas = [
-  rootSchema,
-  buildingSchema,
-  rootSchema.definitions.alternative,
-  rootSchema.definitions.scenario,
-  rootSchema.definitions.project,
-  rootSchema.definitions.resourceList,
-];
-const subSchemas = schemas.reduce((memo, s) => {
-  extractEntities(memo, s, true, true, true);
-  return memo;
-}, []);
-const divider1 = { type: 'divider', key: 'divider-1' };
-const mainEntities = [...mainSchemas, divider1];
-const subEntities = subSchemas.sort((a, b) => {
-  if (a.$id < b.$id) return -1;
-  if (a.$id > b.$id) return 1;
-  return 0;
-});
-const schemaMap = [...schemas, ...subSchemas].reduce((memo, schema) => {
-  if (schema.$id) {
-    memo[schema.$id] = schema; // eslint-disable-line
-  }
-  return memo;
-}, {});
-
 class App extends Component {
-  state = {
-    selectedEntity: rootSchema,
-  };
-
-  componentDidMount() {
-    console.log('start');
-    console.log(buildingSchema);
-  }
-
   handleSelectEntity = entity => {
     window.scrollTo(0, 0);
-    this.setState({
-      selectedEntity: this.state.selectedEntity === entity ? rootSchema : entity,
-    });
+    this.props.store.schema.setSelectedEntityId(entity.$id);
   }
 
-  renderExpandIcon = entity => (
-    this.state.selectedEntity === entity ? <ExpandLess /> : <ExpandMore />
+  renderExpandIcon = entityId => (
+    this.props.store.schema.selectedEntityId === entityId ? <ExpandLess /> : <ExpandMore />
   )
 
   renderEntityList = (entities, listTitle) => {
-    const { classes } = this.props;
+    const { classes, store } = this.props;
     return (
       <List
         component="nav"
         subheader={<ListSubheader component="div">{listTitle}</ListSubheader>}
       >
         { entities.map(s => {
-          if (s.type === 'divider') {
-            return <Divider key={s.key} />;
-          }
           let properties = {};
           if (s.properties) {
             properties = s.properties; // eslint-disable-line
@@ -161,7 +87,7 @@ class App extends Component {
                 { keys.length > 0 && this.renderExpandIcon() }
               </ListItem>
               { keys.length > 0 && (
-                <Collapse in={this.state.selectedEntity === s} timeout="auto" unmountOnExit>
+                <Collapse in={store.schema.selectedEntityId === s.$id} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     { keys.map(key => (
                       <ListItem
@@ -188,7 +114,7 @@ class App extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, store } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="absolute" className={classes.appBar}>
@@ -213,15 +139,14 @@ class App extends Component {
           }}
         >
           <div className={classes.toolbar} />
-          { this.renderEntityList(mainEntities, 'Main entity list') }
-          { this.renderEntityList(subEntities, 'Property list') }
+          { this.renderEntityList(store.schema.mainEntities, 'Main entity list') }
+          <Divider key="divider-1" />
+          { this.renderEntityList(store.schema.subEntities, 'Property list') }
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <FormatEntityDisplay
-            entity={this.state.selectedEntity}
-            onSelectEntity={this.handleSelectEntity}
-            schemaMap={schemaMap}
+            store={store}
           />
         </main>
       </div>
@@ -231,6 +156,7 @@ class App extends Component {
 
 App.propTypes = {
   classes: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(translate()(App));
+export default withStyles(styles)(translate()(observer(App)));

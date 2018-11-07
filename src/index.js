@@ -7,8 +7,9 @@ import { I18nextProvider } from 'react-i18next';
 // Material-UI
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // local
+import store from './store';
 import i18n from './i18n';
-import App from './App';
+import App from './components/App';
 
 const muiTheme = createMuiTheme({
   palette: {
@@ -31,7 +32,7 @@ const i18nOptions = {
 render(
   <I18nextProvider i18n={i18n(i18nOptions)}>
     <MuiThemeProvider theme={muiTheme}>
-      <App />
+      <App store={store} />
     </MuiThemeProvider>
   </I18nextProvider>
   , document.getElementById('app'),

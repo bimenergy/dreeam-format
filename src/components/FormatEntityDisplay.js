@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import nomnoml from 'nomnoml';
 // Material-UI
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
@@ -90,18 +81,26 @@ const styles = () => ({
 
 class FormatEntityDisplay extends Component {
   componentDidMount() {
-    console.log(this.props.schemaMap);
     const { canvas } = this;
-    nomnoml.draw(canvas, generateNomnomlFromSchemaEntity(this.props.entity, this.props.schemaMap));
+    const { schema } = this.props.store;
+    const entity = schema.schemaMap[schema.selectedEntityId];
+    nomnoml.draw(canvas, generateNomnomlFromSchemaEntity(entity, schema.schemaMap));
   }
 
   componentDidUpdate() {
     const { canvas } = this;
-    nomnoml.draw(canvas, generateNomnomlFromSchemaEntity(this.props.entity, this.props.schemaMap));
+    const { schema } = this.props.store;
+    const entity = schema.schemaMap[schema.selectedEntityId];
+    nomnoml.draw(canvas, generateNomnomlFromSchemaEntity(entity, schema.schemaMap));
+  }
+
+  handleSelectEntity = entityId => {
+    window.scrollTo(0, 0);
+    this.props.store.schema.setSelectedEntityId(entityId);
   }
 
   renderPropertyDisplay(prop) {
-    const { onSelectEntity, classes, t } = this.props;
+    const { classes, t } = this.props;
     return (
       <Paper key={prop.$id} className={classes.propertyDisplay} elevation={1}>
         <Typography variant="h5">{prop.title || prop.$id}</Typography>
@@ -113,7 +112,7 @@ class FormatEntityDisplay extends Component {
           </Typography>
         )}
         <Button
-          onClick={() => onSelectEntity(prop)}
+          onClick={() => this.handleSelectEntity(prop.$id)}
           variant="outlined"
           color="secondary"
         >
@@ -126,10 +125,11 @@ class FormatEntityDisplay extends Component {
   render() {
     const {
       classes,
-      entity,
+      store,
       t,
-      schemaMap,
     } = this.props;
+    const { schemaMap, selectedEntityId } = store.schema;
+    const entity = schemaMap[selectedEntityId];
     let properties;
     if (entity.properties) {
       properties = entity.properties; // eslint-disable-line
@@ -168,10 +168,8 @@ class FormatEntityDisplay extends Component {
 
 FormatEntityDisplay.propTypes = {
   classes: PropTypes.object.isRequired,
-  onSelectEntity: PropTypes.func.isRequired,
-  schemaMap: PropTypes.object.isRequired,
-  entity: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(translate('doc')(FormatEntityDisplay));
+export default withStyles(styles)(translate('doc')(observer(FormatEntityDisplay)));

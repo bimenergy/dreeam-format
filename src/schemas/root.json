@@ -1,7 +1,7 @@
 {
   "$id": "root",
   "type": "object",
-  "title": "DREEAM format v0.1",
+  "title": "DREEAM format v0.0.2",
   "description": "A building stock repository data model used for energy measure scenarios",
   "properties": {
     "buildings": {
@@ -30,6 +30,9 @@
     },
     "resourceList": {
       "$ref": "resourceList"
+    },
+    "indicators": {
+      "$ref": "indicator"
     }
   },
   "definitions": {
@@ -256,6 +259,32 @@
       "type": "object",
       "title": "Weater Data",
       "description": "Data structure to model weather or climate data at the location of a building"
+    },
+    "indicator": {
+      "$id": "indicator",
+      "title": "Indicator",
+      "description": "A well defined value that is derived from the data model often by calculation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+        },
+        "name": {
+          "type": "string",
+        },
+        "description": {
+          "type": "string",
+        },
+        "sufficient": {
+          "type": "number",
+        },
+        "excellent": {
+          "type": "number",
+        },
+        "allowed": {
+          "type": "number",
+        }
+      }
     }
   }
 }
