@@ -4,7 +4,7 @@
   "title": "Building",
   "type": "object",
   "allOf": [
-    { "$ref": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/geojson.json" },
+    { "$ref": "Feature#" },
     {
       "properties": {
         "geometry": {
@@ -25,7 +25,7 @@
               "title": "Name",
               "description": "Any arbitrary name string for prepresenting the building as whole"
             },
-            "description": {
+            "description": {
               "type": "string",
               "$id": "description",
               "title": "Description",
@@ -35,7 +35,7 @@
               "$id": "buildingType",
               "title": "Building Type",
               "description": "Classification of building according with their usage and form",
-              "type": "string",
+              "type": "string"
             },
             "class": {
               "type": "string",
@@ -459,7 +459,7 @@
               "title": "Storey Heights Above Ground",
               "type": "array",
               "items": {"type": "number"},
-              "description": "List order for storey heights above ground: first floor, second floor,...",
+              "description": "List order for storey heights above ground: first floor, second floor,..."
             },
             "storeyHeightsBelowGround": { 
               "$id": "storeyHeightsBelowGround",
@@ -478,7 +478,7 @@
               "$id": "yearOfDemolition",
               "title": "Year of Demolition",
               "description": "For buildings that will remain in the system after demolished. Four digits",
-              "type": "integer",
+              "type": "integer"
             },
             "constructionWeight": {
               "$id": "constructionWeight",
@@ -493,34 +493,34 @@
               ]
             },
             "energyPerformanceCertification": {
-              "$id": "energyPerformanceCertification",
+              "$id": "energyPerformanceCertification",
               "type": "string",
               "title": "Energy Performance Certification",
-              "description": "Energy Efficiency Rating",
+              "description": "Energy Efficiency Rating"
             },
             "volume": {
               "$id": "volume",
               "title": "Volume",
               "description": "Total volume delimited by the external building dimension",
-              "type": "number",
+              "type": "number"
             },
             "isLandmarked": {
               "$id": "isLandmarked",
               "title": "Is landmarked?",
               "description": "Landmark / heritage status of the building",
-              "type": "boolean",
+              "type": "boolean"
             },
             "referencePoint": {
               "$id": "referencePoint",
               "title": "Reference Point",
               "description": "Geographical location of the building",
-              "type": "string",
+              "type": "string"
             },
             "floorArea": {
               "$id": "floorArea",
               "title": "Floor Area",
               "description": "Heated floor area",
-              "type": "string",
+              "type": "string"
             }
           }
         },
@@ -559,10 +559,10 @@
         },
         "refurbishmentMeasures": {
           "type": "array",
-          "items": {
+          "items": {
             "$ref": "refurbishmentMeasure"
           }
-        },
+        }
       }
     }
   ],
@@ -585,7 +585,7 @@
           "type": "number"
         },
         "planarGeometry": {
-          "$ref": "#/definitions/planarGeometry"
+          "$ref": "planarGeometry"
         }
       }
     },
@@ -638,7 +638,7 @@
           "type": "string"
         },
         "planarGeometry": {
-          "$ref": "#/definitions/planarGeometry"
+          "$ref": "planarGeometry"
         },
         "glazing": {
           "type": "integer"
@@ -646,7 +646,7 @@
         "openings": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/opening"
+            "$ref": "opening"
           },
           "default": []
         }
@@ -682,7 +682,7 @@
           "type": "string"
         },
         "planarGeometry": {
-          "$ref": "#/definitions/planarGeometry"
+          "$ref": "planarGeometry"
         }
       }
     },
@@ -700,29 +700,6 @@
           "items": {
             "type": "number"
           }
-        }
-      }
-    },
-    "spaceBoundary": {
-      "$id": "spaceBoundary",
-      "type": "object",
-      "description": "Space boundary is information on what is connected to a space.",
-      "properties": {
-        "surfaceIdRef": {
-          "type": "string",
-          "description": "Any format/pattern as long as string"
-        },
-        "area": {
-          "type": "number"
-        },
-        "width": {
-          "type": "number"
-        },
-        "height": {
-          "type": "number"
-        },
-        "planarGeometry": {
-          "$ref": "#/definitions/planarGeometry"
         }
       }
     },
@@ -748,11 +725,11 @@
         "spaceBoundaries": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/spaceBoundary"
+            "$ref": "spaceBoundary"
           }
         },
         "planarGeometry": {
-          "$ref": "#/definitions/planarGeometry"
+          "$ref": "planarGeometry"
         },
         "area": {
           "type": "number"
@@ -762,6 +739,29 @@
         },
         "volume": {
           "type": "number"
+        }
+      }
+    },
+    "spaceBoundary": {
+      "$id": "spaceBoundary",
+      "type": "object",
+      "description": "Space boundary is information on what is connected to a space.",
+      "properties": {
+        "surfaceIdRef": {
+          "type": "string",
+          "description": "Any format/pattern as long as string"
+        },
+        "area": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "planarGeometry": {
+          "$ref": "planarGeometry"
         }
       }
     },
@@ -781,7 +781,7 @@
       "$id": "refurbishmentMeasure",
       "title": "Refurbishment Measure",
       "description": "Reference designation of the degree of refurbishment",
-      "type": "string",
-    },
+      "type": "string"
+    }
   }
 }

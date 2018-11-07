@@ -37,7 +37,7 @@
     }
   },
   "definitions": {
-    "project": {
+ "project": {
       "$id": "project",
       "title": "Project",
       "type": "object"
@@ -58,7 +58,7 @@
     "building": {
       "$ref": "building"
     },
-    "alternative": {
+    "alternative": {
       "$id": "alternative",
       "title": "Alternative",
       "type": "object",
@@ -110,7 +110,7 @@
             "$ref": "genericEnergyConversionSystem"
           }
         },
-        "boilers": {
+        "boilers": {
           "type": "array",
           "items": {
             "$ref": "boiler"
@@ -147,7 +147,7 @@
       "title": "Construction",
       "description": "Simple version with U-values, etc. or layered structure defining materials",
       "type": "object",
-      "properties": {
+      "properties": {
         "uValue": {
           "$id": "uValue",
           "type": "number",
@@ -173,10 +173,10 @@
         }
       }
     },
-    "layerComponent": {
+    "layerComponent": {
       "$id": "layerComponent",
       "title": "Layer Component",
-      "properties": {
+      "properties": {
         "solidMaterial": {
           "$ref": "solidMaterial"
         },
@@ -213,17 +213,17 @@
         } 
       }
     },
-    "heatPump": {
+    "heatPump": {
       "$id": "heatPump",
       "type": "object",
       "title": "Heat pump",
-      "description": "A device that transfers heat from a colder area to a hotter area by using mechanical energy, as in a refrigerator",
+      "description": "A device that transfers heat from a colder area to a hotter area by using mechanical energy, as in a refrigerator"
     },
-    "mechanicalVentilation": {
+    "mechanicalVentilation": {
       "$id": "mechanicalVentilation",
       "type": "object",
       "title": "Mechanical ventilation",
-      "description": "A building ventilation system that uses powered fans or blowers to provide fresh air to rooms when the natural forces of air pressure and gravity are not enough to circulate air through a building",
+      "description": "A building ventilation system that uses powered fans or blowers to provide fresh air to rooms when the natural forces of air pressure and gravity are not enough to circulate air through a building"
     },
     "genericEnergyConversionSystem": {
       "$id": "genericEnergyConversionSystem",
@@ -231,7 +231,7 @@
       "title": "Generic Energy Conversion System",
       "description": "Energy conversion system which cannot be represented by other energy conversion systems"
     },
-    "boiler": {
+    "boiler": {
       "$id": "boiler",
       "type": "object",
       "title": "Boiler",
@@ -255,7 +255,7 @@
       "title": "Solar Thermal System",
       "description": "System converting solar energy in heat (hot water)"
     },
-    "weatherData": {
+    "weatherData": {
       "$id": "weatherData",
       "type": "object",
       "title": "Weater Data",
@@ -268,22 +268,22 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
+          "type": "string"
         },
         "name": {
-          "type": "string",
+          "type": "string"
         },
         "description": {
-          "type": "string",
+          "type": "string"
         },
         "sufficient": {
-          "type": "number",
+          "type": "number"
         },
         "excellent": {
-          "type": "number",
+          "type": "number"
         },
         "allowed": {
-          "type": "number",
+          "type": "number"
         }
       }
     }

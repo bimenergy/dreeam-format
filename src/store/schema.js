@@ -78,6 +78,8 @@ const initialState = {
   selectedEntityId: rootSchema.$id, // store an object from schema (or a complete schema)
 };
 
+console.log(mainSchemas);
+
 /**
  * Keeps the result from simulation to update different result views
  */
