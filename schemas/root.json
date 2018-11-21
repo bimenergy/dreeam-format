@@ -4,6 +4,8 @@
   "type": "object",
   "title": "DREEAM format v0.0.2",
   "description": "A building stock repository data model used for energy measure scenarios",
+  "additionalProperties": false,
+  "required": ["projects", "buildings", "resourceList", "indicators"],
   "properties": {
     "buildings": {
       "type": "array",
@@ -33,11 +35,14 @@
       "$ref": "resourceList"
     },
     "indicators": {
-      "$ref": "indicator"
+      "type": "array",
+      "items": {
+        "$ref": "indicator"
+      }
     }
   },
   "definitions": {
- "project": {
+    "project": {
       "$id": "project",
       "title": "Project",
       "type": "object"

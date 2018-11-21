@@ -11,7 +11,7 @@
     "browserify": "browserify src/index.js --outfile browserified.js -t [ babelify ] -t [cssify --global=true ] -g [envify --NODE_ENV production]",
     "prebuild": "rimraf public/js/*.js browserified.js",
     "build": "npm run browserify && npm run uglify && npm run rename-bundle && npm run cache-bust && npm run build-npm",
-    "build-npm": "babel src/npm -d dist",
+    "build-npm": "babel src/npm -d dist/npm",
     "serve-prod": "budo --dir public/ --open",
     "test": "jest --coverage",
     "check": "depcheck --ignores=\"depcheck,babelify,cssify,envify,babel-cli\"",
