@@ -7,6 +7,9 @@
     { "$ref": "Feature#" },
     {
       "properties": {
+        "projectId": {
+          "type": "number"
+        },
         "geometry": {
           "$id": "geometry",
           "type": "object",
