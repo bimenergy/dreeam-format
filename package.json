@@ -2,7 +2,7 @@
   "name": "dreeam-format",
   "version": "0.0.4",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/npm/index.js",
   "scripts": {
     "start": "budo src/index.js:js/bundle.js --dir public/ --open --port 4021 -- -t babelify -t [cssify --global=true ]",
     "rename-bundle": "mv public/js/bundle.js public/js/bundle.$npm_package_version.js",
