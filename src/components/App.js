@@ -17,10 +17,14 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
+import FileIcon from '@material-ui/icons/InsertDriveFile';
 // local
 import FormatEntityDisplay from './FormatEntityDisplay';
 import GitHubIcon from './GitHubIcon';
 import rootSchema from '../../schemas/root';
+import FileDialog from './FileDialog';
+
+import packageJson from '../../package.json';
 
 const drawerWidth = 240;
 
@@ -56,6 +60,10 @@ class App extends Component {
   handleSelectEntity = entity => {
     window.scrollTo(0, 0);
     this.props.store.schema.setSelectedEntityId(entity.$id);
+  }
+
+  handleOpenFileDialog = () => {
+    this.props.store.ui.showUiComponent('showFileDialog', true);
   }
 
   renderExpandIcon = entityId => (
@@ -120,8 +128,14 @@ class App extends Component {
         <AppBar position="absolute" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.grow} noWrap>
-              { rootSchema.title }
+              { `${rootSchema.title} v${packageJson.version}`}
             </Typography>
+            <IconButton
+              onClick={this.handleOpenFileDialog}
+              color="inherit"
+            >
+              <FileIcon />
+            </IconButton>
             <IconButton
               onClick={() => {
                 window.location = 'https://github.com/bimenergy/dreeam-format';
@@ -149,6 +163,7 @@ class App extends Component {
             store={store}
           />
         </main>
+        { store.ui.showFileDialog && <FileDialog store={store} /> }
       </div>
     );
   }

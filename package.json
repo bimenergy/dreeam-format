@@ -40,6 +40,7 @@
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.4",
     "nomnoml": "^0.2.0",
+    "promise-json-file-reader": "^1.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
