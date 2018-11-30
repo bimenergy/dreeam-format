@@ -523,7 +523,7 @@
               "$id": "floorArea",
               "title": "Floor Area",
               "description": "Heated floor area",
-              "type": "string"
+              "type": "number"
             }
           }
         },
