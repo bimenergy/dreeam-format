@@ -170,6 +170,9 @@
           "items": {
             "$ref": "layer"
           }
+        },
+        "serviceLife": {
+          "$ref": "serviceLife"
         }
       }
     },
@@ -182,6 +185,13 @@
           "items": {
             "$ref": "layerComponent"
           }
+        },
+        "areaFraction": {
+          "type": "number",
+          "default": 1
+        },
+        "serviceLife": {
+          "$ref": "serviceLife"
         }
       }
     },
@@ -295,6 +305,21 @@
           "type": "number"
         },
         "allowed": {
+          "type": "number"
+        }
+      }
+    },
+    "serviceLife": {
+      "$id": "serviceLife",
+      "title": "Service Life",
+      "properties": {
+        "startOfLife": {
+          "type": "string"
+        },
+        "lifeExpectancy": {
+          "type": "number"
+        },
+        "mainMaintenanceInterval": {
           "type": "number"
         }
       }
