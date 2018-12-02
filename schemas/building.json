@@ -742,6 +742,18 @@
         },
         "volume": {
           "type": "number"
+        },
+        "lightScheduleIdRef": {
+          "type": "string"
+        },
+        "equipmentScheduleIdRef": {
+          "type": "string"
+        },
+        "peopleScheduleIdRef": {
+          "type": "string"
+        },
+        "conditionType": {
+          "type": "string"
         }
       }
     },
