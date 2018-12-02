@@ -747,6 +747,7 @@
     },
     "spaceBoundary": {
       "$id": "spaceBoundary",
+      "title": "Space Boundary",
       "type": "object",
       "description": "Space boundary is information on what is connected to a space.",
       "properties": {
