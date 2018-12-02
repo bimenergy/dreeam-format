@@ -34,6 +34,27 @@
               "title": "Description",
               "description": "Any arbitrary description string for building as whole"
             },
+            "countryName": {
+              "type": "string"
+            },
+            "localityName": {
+              "type": "string"
+            },
+            "thoroughfareNumber": {
+              "type": "string"
+            },
+            "thoroughfareName": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "location": {
+              "$id": "location",
+              "title": "Location",
+              "description": "Geographical location of the building. The format and usage is unclear so it's defined as string for the moment. This is probably meant to be the geographical point of the official entrance. A proper simple geographical representation of the full building can be done through the GeoJson data of the building",
+              "type": "string"
+            },
             "buildingType": {
               "$id": "buildingType",
               "title": "Building Type",
@@ -512,12 +533,6 @@
               "title": "Is landmarked?",
               "description": "Landmark / heritage status of the building",
               "type": "boolean"
-            },
-            "referencePoint": {
-              "$id": "referencePoint",
-              "title": "Reference Point",
-              "description": "Geographical location of the building",
-              "type": "string"
             },
             "floorArea": {
               "$id": "floorArea",
