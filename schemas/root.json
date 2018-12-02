@@ -159,11 +159,17 @@
       "title": "Construction",
       "description": "Simple version with U-values, etc. or layered structure defining materials",
       "type": "object",
+      "required": ["opticalProperties", "layers"],
       "properties": {
         "uValue": {
           "$id": "uValue",
           "type": "number",
           "title": "U-Value"
+        },
+        "opticalProperties": {
+          "maxItems": 1,
+          "minItems": 1,
+          "$ref": "opticalProperties"
         },
         "layers": {
           "type": "array",
@@ -172,6 +178,8 @@
           }
         },
         "serviceLife": {
+          "maxItems": 1,
+          "minItems": 0,
           "$ref": "serviceLife"
         }
       }
@@ -179,31 +187,38 @@
     "layer": {
       "$id": "layer",
       "title": "Layer",
+      "type": "object",
       "properties": {
         "layerComponents": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "layerComponent"
           }
-        },
-        "areaFraction": {
-          "type": "number",
-          "default": 1
-        },
-        "serviceLife": {
-          "$ref": "serviceLife"
         }
       }
     },
     "layerComponent": {
       "$id": "layerComponent",
       "title": "Layer Component",
+      "type": "object",
+      "required": ["thickness", "solidMaterial"],
       "properties": {
         "solidMaterial": {
+          "maxItems": 1,
+          "minItems": 1,
           "$ref": "solidMaterial"
         },
         "thickness": {
           "type": "number"
+        },
+        "areaFraction": {
+          "type": "number",
+          "default": 1
+        },
+        "serviceLife": {
+          "maxItems": 1,
+          "$ref": "serviceLife"
         }
       }  
     },
@@ -312,6 +327,7 @@
     "serviceLife": {
       "$id": "serviceLife",
       "title": "Service Life",
+      "type": "object",
       "properties": {
         "startOfLife": {
           "type": "string"
@@ -320,6 +336,25 @@
           "type": "number"
         },
         "mainMaintenanceInterval": {
+          "type": "number"
+        }
+      }
+    },
+    "opticalProperties": {
+      "$id": "opticalProperties",
+      "title": "Optical Properties",
+      "type": "object",
+      "properties": {
+        "emissivity": {
+          "type": "number"
+        },
+        "reflectance": {
+          "type": "number"
+        },
+        "transmittance": {
+          "type": "number"
+        },
+        "glazingRatio": {
           "type": "number"
         }
       }

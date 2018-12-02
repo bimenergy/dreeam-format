@@ -35,6 +35,8 @@ function generateNomnomlFromSchemaEntity(entity, schemaMap) {
     if (item.type === 'array' && item.items && item.items.$ref) {
       const definition = schemaMap[item.items.$ref];
       if (definition) {
+        definition.minItems = item.minItems || 0;
+        definition.maxItems = item.maxItems || '*';
         memo.composites.push(definition);
       } else {
         console.warn(`definition could not be found: ${item.items.$ref}`);
@@ -42,6 +44,8 @@ function generateNomnomlFromSchemaEntity(entity, schemaMap) {
     } else if (item.$ref) {
       const definition = schemaMap[item.$ref];
       if (definition) {
+        definition.minItems = item.minItems || 0;
+        definition.maxItems = item.maxItems || '*';
         memo.composites.push(definition);
       } else {
         console.warn(`definition could not be found: ${item.$ref}`);
@@ -58,7 +62,8 @@ function generateNomnomlFromSchemaEntity(entity, schemaMap) {
   content.composites.forEach(c => {
     const min = c.minItems || 0;
     const max = c.maxItems || '*';
-    result += `\n[${title}]- ${min}..${max}[${generateNomnomlTitle(c.title, c.$id, c.type)}]`;
+    const minMaxString = min === max ? min : `${min}..${max}`;
+    result += `\n[${title}]- ${minMaxString}[${generateNomnomlTitle(c.title, c.$id, c.type)}]`;
   });
   return result;
 }
