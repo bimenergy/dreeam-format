@@ -40,7 +40,6 @@
     "fakerator": "^0.3.0",
     "geojson-random": "^0.4.0",
     "i18next": "^10.0.7",
-    "json-schema-defaults": "^0.4.0",
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.4",
     "nomnoml": "^0.2.0",

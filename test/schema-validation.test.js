@@ -1,5 +1,6 @@
 import { validateBuilding, Validator } from '../src/npm';
 import { Validator as ValidatorDist } from '../dist/npm';
+import cuid from 'cuid';
 
 test('get a validator', () => {
   // Given
@@ -14,6 +15,8 @@ test('get a validator', () => {
 test('validate building', () => {
   // Given
   const building = {
+    buildingId: cuid(),
+    userId: 'dummy',
     type: 'Feature',
     geometry: {
       type: 'Polygon',
