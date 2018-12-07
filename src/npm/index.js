@@ -4,6 +4,7 @@ import rootSchema from '../../schemas/root';
 import buildingSchema from '../../schemas/building';
 import featureSchema from '../../schemas/feature';
 import heatPumpSchema from '../../schemas/heatPump';
+export * from './fakeBuildingGenerator';
 
 export function Validator() {
   const ajv = Ajv({

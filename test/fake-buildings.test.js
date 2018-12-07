@@ -1,5 +1,4 @@
-import { generateFakeBuildings } from '../src/npm/fakeBuildingGenerator';
-import { validateBuilding } from '../src/npm';
+import { validateBuilding, generateFakeBuildings } from '../src/npm';
 
 test('fake building should be valid', () => {
   // Given
