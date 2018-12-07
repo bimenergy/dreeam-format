@@ -107,7 +107,7 @@
         "heatPumps": {
           "type": "array",
           "items": {
-            "$ref": "heatPump"
+            "$ref": "heatPump#"
           }
         },
         "mechanicalVentilations": {
@@ -167,8 +167,6 @@
           "title": "U-Value"
         },
         "opticalProperties": {
-          "maxItems": 1,
-          "minItems": 1,
           "$ref": "opticalProperties"
         },
         "layers": {
@@ -178,8 +176,6 @@
           }
         },
         "serviceLife": {
-          "maxItems": 1,
-          "minItems": 0,
           "$ref": "serviceLife"
         }
       }
@@ -205,8 +201,6 @@
       "required": ["thickness", "solidMaterial"],
       "properties": {
         "solidMaterial": {
-          "maxItems": 1,
-          "minItems": 1,
           "$ref": "solidMaterial"
         },
         "thickness": {
@@ -217,7 +211,6 @@
           "default": 1
         },
         "serviceLife": {
-          "maxItems": 1,
           "$ref": "serviceLife"
         }
       }  
@@ -249,12 +242,6 @@
           "type": "number"
         } 
       }
-    },
-    "heatPump": {
-      "$id": "heatPump",
-      "type": "object",
-      "title": "Heat pump",
-      "description": "A device that transfers heat from a colder area to a hotter area by using mechanical energy, as in a refrigerator"
     },
     "mechanicalVentilation": {
       "$id": "mechanicalVentilation",
@@ -328,6 +315,7 @@
       "$id": "serviceLife",
       "title": "Service Life",
       "type": "object",
+      "description": "",
       "properties": {
         "startOfLife": {
           "type": "string"
@@ -344,6 +332,7 @@
       "$id": "opticalProperties",
       "title": "Optical Properties",
       "type": "object",
+      "description": "",
       "properties": {
         "emissivity": {
           "type": "number"

@@ -6,9 +6,53 @@
   "allOf": [
     { "$ref": "Feature#" },
     {
+      "required": ["properties"],
       "properties": {
-        "projectId": {
-          "type": "number"
+        "buildingId": {
+          "type": "string",
+          "description": "ID for this building, not that many building objects will have the same id"
+        },
+        "versionId": {
+          "type": "string",
+          "description": "Unique ID to identify a specific version of the building together with previous versions"
+        },
+        "parentVersionId": {
+          "type": "string",
+          "description": "This is how the building can get complete. Only an original/root building will not have this id"
+        },
+        "creationDate": {
+          "type": "string",
+          "description": "When this version was created in the system"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user creating this version"
+        },
+        "admin": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "User ids with full rights to this building"
+        },
+        "write": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "User ids that can create new change sets"
+        },
+        "read": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "User ids with read rights to this building"
+        },
+        "public": {
+          "type": "boolean",
+          "default": "false",
+          "description": "If this is true, everyone can read the building"
         },
         "geometry": {
           "$id": "geometry",
@@ -59,13 +103,20 @@
               "$id": "buildingType",
               "title": "Building Type",
               "description": "Classification of building according with their usage and form",
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "apartmentBlock",
+                "multiFamilyHouse",
+                "rowHouse",
+                "singleFamilyHouse",
+                "terracedHouse"
+              ]
             },
             "class": {
               "type": "string",
               "$id": "class",
               "title": "Class",
-              "description": "A code list or enumeration will be used for classification",
+              "description": "The attribute class allows an unspecified classification of the building; no suggestion from the SIG3D",
               "enum": [
                 "habitation",
                 "sanitation",
@@ -92,7 +143,7 @@
               "type": "string",
               "$id": "function",
               "title": "Function",
-              "description": "A code list or enumeration will be used to describe the function of the building",
+              "description": "The function of a building is the predominantly functional significance of the building at the date of data collection ( principle of dominance ); see also in the SIG3D code lists",
               "enum": [
                 "residential building",
                 "tenement",
@@ -267,7 +318,7 @@
               "type": "string",
               "$id": "usage",
               "title": "Usage",
-              "description": "A code list will be used to describe usage of the building. This is a fallback for all thermal zones that lacks description on user behaviour",
+              "description": "The usage of a building describes the use of the building and contains the respective percentage usage share of the total use. This is a fallback for all thermal zones that lacks description on user behaviour",
               "enum": [
                 "residential building",
                 "tenement",
@@ -442,7 +493,7 @@
               "$id": "measuredHeight",
               "title": "Measured Height",
               "type": "number",
-              "description": "A number representing the height in meters above ground"
+              "description": "Measured height is the difference in [m] between the highest point of the roof structure and the defined footprint of the building"
             },
             "roofType": {
               "$id": "roofType",
@@ -516,17 +567,23 @@
                 "heavy"
               ]
             },
-            "energyPerformanceCertification": {
-              "$id": "energyPerformanceCertification",
+            "energyPerformanceCertificationId": {
+              "$id": "energyPerformanceCertificationId",
               "type": "string",
-              "title": "Energy Performance Certification",
-              "description": "Energy Efficiency Rating"
+              "title": "Energy Performance Certification ID",
+              "description": "The ID of the certification"
             },
-            "volume": {
-              "$id": "volume",
-              "title": "Volume",
-              "description": "Total volume delimited by the external building dimension",
-              "type": "number"
+            "energyPerformanceCertificationName": {
+              "$id": "energyPerformanceCertificationName",
+              "type": "string",
+              "title": "Energy Performance Certification Name",
+              "description": "A name of certification"
+            },
+            "energyPerformanceCertificationRating": {
+              "$id": "energyPerformanceCertificationRating",
+              "type": "string",
+              "title": "Energy Performance Certification Rating",
+              "description": "The rating, most likely a character"
             },
             "isLandmarked": {
               "$id": "isLandmarked",
@@ -534,32 +591,48 @@
               "description": "Landmark / heritage status of the building",
               "type": "boolean"
             },
-            "floorArea": {
-              "$id": "floorArea",
-              "title": "Floor Area",
-              "description": "Heated floor area",
+            "grossVolume": {
+              "$id": "grossVolume",
+              "title": "Gross Volume",
+              "description": "Total volume delimited by the external building dimension",
+              "type": "number"
+            },
+            "netVolume": {
+              "$id": "netVolume",
+              "title": "Net Volume",
+              "description": "Total volume delimited by the internal building dimension",
+              "type": "number"
+            },
+            "energyReferenceVolume": {
+              "$id": "energyReferenceVolume",
+              "title": "Energy Reference Volume",
+              "description": "Volume to be used in thermal calculations",
+              "type": "number"
+            },
+            "grossFloorArea": {
+              "$id": "grossFloorArea",
+              "title": "Gross Floor Area",
+              "description": "Outer area of the building",
+              "type": "number"
+            },
+            "netFloorArea": {
+              "$id": "netFloorArea",
+              "title": "Net Floor Area",
+              "description": "Interior floor area of the building",
+              "type": "number"
+            },
+            "energyReferenceArea": {
+              "$id": "energyReferenceArea",
+              "title": "Energy Reference Area",
+              "description": "This is the heated area to use as reference in energy calculation",
               "type": "number"
             }
           }
         },
-        "spaces": {
+        "rooms": {
           "type": "array",
           "items": {
-            "$ref": "space"
-          },
-          "default": []
-        },
-        "surfaces": {
-          "type": "array",
-          "items": {
-            "$ref": "surface"
-          },
-          "default": []
-        },
-        "buildingStoreys": {
-          "type": "array",
-          "items": {
-            "$ref": "buildingStorey"
+            "$ref": "room"
           },
           "default": []
         },
@@ -575,6 +648,12 @@
             "$ref": "usageZone"
           }
         },
+        "buildingUnits": {
+          "type": "array",
+          "items": {
+            "$ref": "buildingUnit"
+          }
+        },
         "refurbishmentMeasures": {
           "type": "array",
           "items": {
@@ -585,10 +664,11 @@
     }
   ],
   "definitions": {
-    "buildingStorey": {
-      "title": "Building Storey",
-      "$id": "buildingStorey",
+    "room": {
       "type": "object",
+      "title": "Room",
+      "$id": "room",
+      "description": "A Room is a thematic object for modelling the closed parts inside a building",
       "properties": {
         "id": {
           "type": "string"
@@ -596,203 +676,12 @@
         "name": {
           "type": "string"
         },
-        "level": {
-          "type": "number"
+        "description": {
+          "type": "string"
         },
-        "height": {
-          "type": "number"
-        },
-        "planarGeometry": {
-          "$ref": "planarGeometry"
-        }
-      }
-    },
-    "surface": {
-      "title": "Surface",
-      "$id": "surface",
-      "description": "Surface is subset of the gbXML description of a surface",
-      "type": "object",
-      "required": [
-        "surfaceType"
-      ],
-      "properties": {
-        "constructionIdRef": {
+        "thermalZoneId": {
           "type": "string",
-          "pattern": "^[0-9a-fA-F]{24}$"
-        },
-        "id": {
-          "type": "string"
-        },
-        "surfaceType": {
-          "type": "string",
-          "enum": [
-            "InteriorWall",
-            "ExteriorWall",
-            "Roof",
-            "InteriorFloor",
-            "ExposedFloor",
-            "Shade",
-            "UndergroundWall",
-            "UndergroundSlab",
-            "Ceiling",
-            "Air",
-            "UndergroundCeiling",
-            "RaisedFloor",
-            "SlabOnGrade",
-            "FreestandingColumn",
-            "EmbeddedColumn"
-          ]
-        },
-        "exposedToSun": {
-          "type": "boolean"
-        },
-        "adjacentSpaceIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "name": {
-          "type": "string"
-        },
-        "planarGeometry": {
-          "$ref": "planarGeometry"
-        },
-        "glazing": {
-          "type": "integer"
-        },
-        "openings": {
-          "type": "array",
-          "items": {
-            "$ref": "opening"
-          },
-          "default": []
-        }
-      }
-    },
-    "opening": {
-      "$id": "opening",
-      "title": "Opening",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "coordinatesAbsolute": {
-          "type": "boolean"
-        },
-        "openingType": {
-          "type": "string",
-          "enum": [
-            "FixedWindow",
-            "NonSlidingDoor",
-            "OperableWindow",
-            "FixedSkylight",
-            "OperableSkylight",
-            "SlidingDoor",
-            "Air"
-          ]
-        },
-        "constructionIdRef": {
-          "type": "string"
-        },
-        "ifcGUID": {
-          "type": "string"
-        },
-        "planarGeometry": {
-          "$ref": "planarGeometry"
-        }
-      }
-    },
-    "planarGeometry": {
-      "$id": "planarGeometry",
-      "title": "Planar Geometry",
-      "description": "Multi-polygon geometry described in gbXML, except very much simplifed here",
-      "type":"array",
-      "items": {
-        "type": "array",
-        "items": {
-          "minItems": 3,
-          "maxItems": 3,
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        }
-      }
-    },
-    "space": {
-      "type": "object",
-      "title": "Space",
-      "$id": "space",
-      "description": "A space represents a volume enclosed by surfaces.",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "buildingStoryIdRef": {
-          "type": "string",
-          "pattern": "^[0-9a-fA-F]{24}$"
-        },
-        "zoneIdRef": {
-          "type": "string"
-        },
-        "spaceBoundaries": {
-          "type": "array",
-          "items": {
-            "$ref": "spaceBoundary"
-          }
-        },
-        "planarGeometry": {
-          "$ref": "planarGeometry"
-        },
-        "area": {
-          "type": "number"
-        },
-        "level": {
-          "type": "integer"
-        },
-        "volume": {
-          "type": "number"
-        },
-        "lightScheduleIdRef": {
-          "type": "string"
-        },
-        "equipmentScheduleIdRef": {
-          "type": "string"
-        },
-        "peopleScheduleIdRef": {
-          "type": "string"
-        },
-        "conditionType": {
-          "type": "string"
-        }
-      }
-    },
-    "spaceBoundary": {
-      "$id": "spaceBoundary",
-      "title": "Space Boundary",
-      "type": "object",
-      "description": "Space boundary is information on what is connected to a space.",
-      "properties": {
-        "surfaceIdRef": {
-          "type": "string",
-          "description": "Any format/pattern as long as string"
-        },
-        "area": {
-          "type": "number"
-        },
-        "width": {
-          "type": "number"
-        },
-        "height": {
-          "type": "number"
-        },
-        "planarGeometry": {
-          "$ref": "planarGeometry"
+          "description": "Connects this room to a thermal zone if this room should be part of energy simulation"
         }
       }
     },
@@ -800,7 +689,90 @@
       "$id": "thermalZone",
       "title": "Thermal Zone",
       "type": "object",
-      "description": "Primarily used for heating and cooling settings"
+      "description": "A thermal zone is a zone of a building which serves as unit for the building heating and cooling simulation. For the simulation, a thermal zone is considered as isothermal. It is a semantic object, which may be or not related to a geometric entity.",
+      "properties": {
+        "usageZoneId": {
+          "type": "string",
+          "description": "Connects this room to a usage zone if this room should be part of energy simulation"
+        },
+        "additionalThermalBridgeUValue": {
+          "$id": "additionalThermalBridgeUValue",
+          "title": "Additional Thermal Bridge U-Value",
+          "description": "Additional U-Value in W/K,m2 for this zone",
+          "type": "number"
+        },
+        "effectiveThermalCapacity": {
+          "$id": "effectiveThermalCapacity",
+          "title": "Effective Thermal Capacity",
+          "description": "Capacity in J/K",
+          "type": "number"
+        },
+        "infiltrationRate": {
+          "$id": "infiltrationRate",
+          "title": "Infiltration Rate",
+          "description": "Still unclear how to use"
+        },
+        "indirectlyHeatedAreaRatio": {
+          "$id": "indirectlyHeatedAreaRatio",
+          "title": "Indirectly Heated Area Ratio",
+          "description": "Still unclear how to use"
+        },
+        "grossVolume": {
+          "$id": "grossVolume",
+          "title": "Gross Volume",
+          "description": "Total volume delimited by the external building dimension",
+          "type": "number"
+        },
+        "netVolume": {
+          "$id": "netVolume",
+          "title": "Net Volume",
+          "description": "Total volume delimited by the internal building dimension",
+          "type": "number"
+        },
+        "energyReferenceVolume": {
+          "$id": "energyReferenceVolume",
+          "title": "Energy Reference Volume",
+          "description": "Volume to be used in thermal calculations",
+          "type": "number"
+        },
+        "grossFloorArea": {
+          "$id": "grossFloorArea",
+          "title": "Gross Floor Area",
+          "description": "Outer area of the building",
+          "type": "number"
+        },
+        "netFloorArea": {
+          "$id": "netFloorArea",
+          "title": "Net Floor Area",
+          "description": "Interior floor area of the building",
+          "type": "number"
+        },
+        "energyReferenceArea": {
+          "$id": "energyReferenceArea",
+          "title": "Energy Reference Area",
+          "description": "This is the heated area to use as reference in energy calculation",
+          "type": "number"
+        },
+        "isCooled": {
+          "$id": "isCooled",
+          "title": "Is cooled?",
+          "description": "If this is false, cooling demand should not be considered for this zone",
+          "type": "boolean",
+          "default": "true"
+        },
+        "isHeated": {
+          "$id": "isHeated",
+          "title": "Is heated?",
+          "description": "If this is false, heating demand should not be considered for this zone",
+          "type": "boolean",
+          "default": "true"
+        },
+        "volumeGeometry": {
+          "$id": "volumeGeometry",
+          "title": "Volume Geometry",
+          "description": "describes an explicit volume geometry in the case where the room geometries should not be used to define the thermal zone geometry"
+        }
+      }
     },
     "usageZone": {
       "$id": "usageZone",
@@ -808,11 +780,32 @@
       "type": "object",
       "description": "A usage zone is a zone of a building with homogeneous usage type"
     },
+    "buildingUnit": {
+      "$id": "buildingUnit",
+      "title": "Building Unit",
+      "type": "object",
+      "description": "Object with lockable access from the outside or from a common area (i.e. not from another BuildingUnit), which is atomic, functionally independent, and may be separately sold, rented out, inherited, etc (source: INSPIRE Data Specification Buildings, v3.0, p.29)."
+    },
     "refurbishmentMeasure": {
       "$id": "refurbishmentMeasure",
       "title": "Refurbishment Measure",
       "description": "Reference designation of the degree of refurbishment",
-      "type": "string"
+      "type": "object",
+      "properties": {
+        "dateOfRefurbishment": {
+          "type": "string"
+        },
+        "descriptionOfRefurbishment": {
+          "type": "string"
+        },
+        "levelOfRefurbishment": {
+          "type": "string",
+          "enum": [
+            "AdvancedRefurbishment",
+            "UsualRefurbishment"
+          ]
+        }
+      }
     }
   }
 }

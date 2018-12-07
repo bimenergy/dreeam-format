@@ -1,7 +1,9 @@
 import Ajv from 'ajv';
+import defaults from 'json-schema-defaults';
 import rootSchema from '../../schemas/root';
 import buildingSchema from '../../schemas/building';
 import featureSchema from '../../schemas/feature';
+import heatPumpSchema from '../../schemas/heatPump';
 
 export function Validator() {
   const ajv = Ajv({
@@ -10,6 +12,7 @@ export function Validator() {
   ajv.addSchema(rootSchema);
   ajv.addSchema(buildingSchema);
   ajv.addSchema(featureSchema);
+  ajv.addSchema(heatPumpSchema);
   return ajv;
 }
 
@@ -21,4 +24,8 @@ export function validateBuilding(building) {
     return false;
   }
   return true;
+}
+
+export function generateHeatPump() {
+  return defaults(heatPumpSchema);
 }
