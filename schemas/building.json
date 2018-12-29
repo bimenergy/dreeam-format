@@ -629,6 +629,11 @@
               "title": "Energy Reference Area",
               "description": "This is the heated area to use as reference in energy calculation",
               "type": "number"
+            },
+            "buildingMainConstruction": {
+              "$id": "buildingMainConstruction",
+              "title": "Building Main Construction",
+              "description": "This is used for any initial specification of a main construction in the climate shell"
             }
           }
         },
