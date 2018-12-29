@@ -634,6 +634,18 @@
               "$id": "buildingMainConstruction",
               "title": "Building Main Construction",
               "description": "This is used for any initial specification of a main construction in the climate shell"
+            },
+            "numberOfApartments": {
+              "$id": "numberOfApartments",
+              "title": "Number of apartments",
+              "description": "Custom property to specify number of apartments in this building, this will generate the same amount of building units",
+              "type": "number"
+            },
+            "numberOfRooms": {
+              "$id": "numberOfRooms",
+              "title": "Number of rooms",
+              "description": "Custom property to specify how many rooms in total in the building, initially this will be equally distributed between the building units",
+              "type": "number"
             }
           }
         },
