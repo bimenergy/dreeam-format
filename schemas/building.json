@@ -99,8 +99,9 @@
             "location": {
               "$id": "location",
               "title": "Location",
-              "description": "Geographical location of the building. The format and usage is unclear so it's defined as string for the moment. This is probably meant to be the geographical point of the official entrance. A proper simple geographical representation of the full building can be done through the GeoJson data of the building",
-              "type": "string"
+              "description": "Geographical location of the building. The format and usage is unclear for the moment, for the moment set as array with lon, lat. This is probably meant to be the geographical point of the official entrance. A proper simple geographical representation of the full building can be done through the GeoJson data of the building",
+              "type": "array",
+              "items": {"type": "number"}
             },
             "buildingType": {
               "$id": "buildingType",
