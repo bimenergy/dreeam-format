@@ -716,10 +716,11 @@
               "description": "Yearly energy consumption in kWh",
               "type": "number"
             },
-            "wallThickness": {
-              "$id": "wallThickness",
-              "title": "Wall thickness",
-              "description": "Thickness of the wall in meters"
+            "exteriorWallThickness": {
+              "$id": "exteriorWallThickness",
+              "title": "Exterior wall thickness",
+              "description": "Exterior wall thickness of in meters",
+              "type": "number"
             }
           }
         },
