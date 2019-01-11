@@ -647,6 +647,79 @@
               "title": "Number of rooms",
               "description": "Custom property to specify how many rooms in total in the building, initially this will be equally distributed between the building units",
               "type": "number"
+            },
+            "exteriorWallUValue": {
+              "$id": "exteriorWallUValue",
+              "title": "Exterior wall U-Value",
+              "description": "One U-Value to use for all exterior wall in any orientation",
+              "type": "number"
+            },
+            "roofUValue": {
+              "$id": "roofUValue",
+              "title": "Roof U-Value",
+              "description": "A U-Value to use for the roof building parts",
+              "type": "number"
+            },
+            "sogUValue": {
+              "$id": "sogUValue",
+              "title": "Slab on ground U-Value",
+              "description": "A U-Value to use for the slab on ground",
+              "type": "number"
+            },
+            "windowUValue": {
+              "$id": "windowUValue",
+              "title": "Window U-Value",
+              "description": "A U-Value to use for the windows",
+              "type": "number"
+            },
+            "glazing": {
+              "$id": "glazing",
+              "title": "Glazing",
+              "description": "A percentage of glazing for the facades",
+              "type": "number",
+              "min": 0,
+              "max": 100
+            },
+            "width": {
+              "$id": "width",
+              "title": "Width",
+              "description": "For very simple box shaped buildings a width can be used",
+              "type": "number"
+            },
+            "length": {
+              "$id": "length",
+              "title": "Length",
+              "description": "For very simple box shaped buildings a length can be used",
+              "type": "number"
+            },
+            "insideMinTemperature": {
+              "$id": "insideMinTemperature",
+              "title": "Inside min temperature",
+              "description": "This is the minimum expected inside temperature in the building if nothing else is specified",
+              "type": "number"
+            },
+            "insideMaxTemperature": {
+              "$id": "insideMaxTemperature",
+              "title": "Inside max temperature",
+              "description": "This is the maximum expected inside temperature in the building if nothing else is specified",
+              "type": "number"
+            },
+            "airExchange": {
+              "$id": "airExchange",
+              "title": "Air exchange",
+              "description": "This is the air exchange in m3 per hour",
+              "type": "number"
+            },
+            "yearlyEnergyConsumption": {
+              "$id": "yearlyEnergyConsumption",
+              "title": "Yearly energy consumption",
+              "description": "Yearly energy consumption in kWh",
+              "type": "number"
+            },
+            "wallThickness": {
+              "$id": "wallThickness",
+              "title": "Wall thickness",
+              "description": "Thickness of the wall in meters"
             }
           }
         },
