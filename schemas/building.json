@@ -704,10 +704,16 @@
               "description": "This is the maximum expected inside temperature in the building if nothing else is specified",
               "type": "number"
             },
-            "airExchange": {
-              "$id": "airExchange",
-              "title": "Air exchange",
-              "description": "This is the air exchange in m3 per hour",
+            "exhaustAirFlow": {
+              "$id": "exhaustAirFlow",
+              "title": "Exhaust air flow",
+              "description": "This is the air flow in m3 per hour",
+              "type": "number"
+            },
+            "supplyAirFlow": {
+              "$id": "supplyAirFlow",
+              "title": "Supply air flow",
+              "description": "This is the air flow in m3 per hour",
               "type": "number"
             },
             "yearlyEnergyConsumption": {
@@ -720,6 +726,18 @@
               "$id": "exteriorWallThickness",
               "title": "Exterior wall thickness",
               "description": "Exterior wall thickness of in meters",
+              "type": "number"
+            },
+            "longitude": {
+              "$id": "longitude",
+              "title": "Longitude",
+              "description": "Longitude",
+              "type": "number"
+            },
+            "latitude": {
+              "$id": "latitude",
+              "title": "Latitude",
+              "description": "Latitude",
               "type": "number"
             }
           }

@@ -1,7 +1,6 @@
 import cuid from 'cuid';
 import Fakerator from 'fakerator';
 import geojsonRandom from 'geojson-random';
-import buildingSchema from '../../schemas/building';
 
 const fakerator = Fakerator('en-EN');
 
@@ -99,13 +98,13 @@ function getRoofType() {
   return roofs[index];
 }
 
-function getBuildingType() {
+function getBuildingType() {
   const types = [
     'apartmentBlock',
     'multiFamilyHouse',
     'rowHouse',
     'singleFamilyHouse',
-    'terracedHouse'
+    'terracedHouse',
   ];
   const index = fakerator.random.number(0, 4);
   return types[index];
@@ -113,7 +112,7 @@ function getBuildingType() {
 
 export function generateFakeBuildings(numBuildings) {
   const bb = [-2.6893740122, 50.9172557586, 0.5197601167, 52.7304000171];
-  const { features } = geojsonRandom.point(numBuildings);
+  const { features } = geojsonRandom.point(numBuildings, bb);
 
   const buildings = Array(numBuildings).fill().map((_, i) => {
     const streetName = fakerator.address.streetName();
@@ -124,16 +123,18 @@ export function generateFakeBuildings(numBuildings) {
     const measuredHeight = storeysAboveGround * storeyHeight;
     const grossFloorArea = fakerator.random.number(60, 2000);
     const netFloorArea = fakerator.random.number(60, grossFloorArea);
-    const energyReferenceArea = fakerator.random.number(netFloorArea, grossFloorArea)
+    const energyReferenceArea = fakerator.random.number(netFloorArea, grossFloorArea);
     const grossVolume = grossFloorArea * measuredHeight;
     const netVolume = netFloorArea * measuredHeight;
     const energyReferenceVolume = energyReferenceArea * measuredHeight;
-    
+
     return Object.assign(features[i], {
       buildingId: cuid(),
       userId: 'testuser',
       creationDate: new Date().toISOString(),
       properties: {
+        longitude: features[i].geometry.coordinates[0],
+        latitude: features[i].geometry.coordinates[1],
         name: `${streetName} ${streetNumber}`,
         thoroughfareName: streetName,
         thoroughfareNumber: streetNumber,
@@ -148,7 +149,7 @@ export function generateFakeBuildings(numBuildings) {
         roofType: getRoofType(),
         storeysAboveGround,
         storeysBelowGround,
-        storeyHeightsAboveGround: Array(storeysAboveGround).fill().map((_, i) => i * storeyHeight),
+        storeyHeightsAboveGround: Array(storeysAboveGround).fill().map((a, j) => j * storeyHeight),
         storeyHeightsBelowGround: storeysBelowGround ? [storeyHeight] : [],
         yearOfConstruction: fakerator.random.number(1900, 2000),
         constructionWeight: getConstructionWeight(),
@@ -157,7 +158,7 @@ export function generateFakeBuildings(numBuildings) {
         energyReferenceArea,
         grossVolume,
         netVolume,
-        energyReferenceVolume
+        energyReferenceVolume,
       },
     });
   });
