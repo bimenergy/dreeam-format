@@ -13,3 +13,10 @@ test('should get an object of filtered building properties', () => {
   // When
   expect(obj.name).toBeTruthy();
 });
+
+test('should get an extended object of filtered building properties', () => {
+  // Given
+  const obj = getBuildingProperties(true, true);
+  // When
+  expect(obj.name.key === 'name').toBeTruthy();
+});

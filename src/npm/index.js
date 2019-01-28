@@ -31,13 +31,22 @@ export function generateHeatPump() {
   return defaults(heatPumpSchema);
 }
 
-export function getBuildingProperties(asObject) {
+export function getBuildingProperties(asObject, extended) {
   const { properties } = buildingSchema.allOf[1].properties.properties;
   const propertyFilterList = Object.keys(properties).filter(key =>
     buildingPropertyFilter[key]);
   if (asObject) {
     const obj = propertyFilterList.reduce((memo, key) => {
-      memo[key] = true;
+      if (extended) {
+        const p = properties[key];
+        memo[key] = {
+          key,
+          type: p.type,
+          enum: p.enum ? p.enum : null,
+        };
+      } else {
+        memo[key] = true;
+      }
       return memo;
     }, {});
     return obj;
