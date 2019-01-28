@@ -4,7 +4,7 @@ import rootSchema from '../../schemas/root';
 import buildingSchema from '../../schemas/building';
 import featureSchema from '../../schemas/feature';
 import heatPumpSchema from '../../schemas/heatPump';
-export * from './fakeBuildingGenerator';
+import buildingPropertyFilter from './buildingPropertyFilter';
 
 export function Validator() {
   const ajv = Ajv({
@@ -29,4 +29,18 @@ export function validateBuilding(building) {
 
 export function generateHeatPump() {
   return defaults(heatPumpSchema);
+}
+
+export function getBuildingProperties(asObject) {
+  const { properties } = buildingSchema.allOf[1].properties.properties;
+  const propertyFilterList = Object.keys(properties).filter(key =>
+    buildingPropertyFilter[key]);
+  if (asObject) {
+    const obj = propertyFilterList.reduce((memo, key) => {
+      memo[key] = true;
+      return memo;
+    }, {});
+    return obj;
+  }
+  return propertyFilterList;
 }
