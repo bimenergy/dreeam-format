@@ -217,8 +217,8 @@
               "title": "Number of Occupants",
               "description": "Number of occupants that resided in the building. Will be used for other usage properties that use per person measures"
             },
-            "occupancyTime": {
-              "$id": "occupancyTime",
+            "occupancyTimePerPerson": {
+              "$id": "occupancyTimePerPerson",
               "title": "Occupancy Time",
               "description": "How many hours per person in the building per day"
             },
