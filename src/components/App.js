@@ -77,7 +77,7 @@ class App extends Component {
         component="nav"
         subheader={<ListSubheader component="div">{listTitle}</ListSubheader>}
       >
-        { entities.map(s => {
+        { entities.map((s, i) => {
           let properties = {};
           if (s.properties) {
             properties = s.properties; // eslint-disable-line
@@ -86,7 +86,7 @@ class App extends Component {
           }
           const keys = Object.keys(properties).filter(key => properties[key].$id);
           return (
-            <div key={s.$id}>
+            <div key={`${s.$id}${i}`}>
               <ListItem
                 button
                 onClick={() => this.handleSelectEntity(s)}

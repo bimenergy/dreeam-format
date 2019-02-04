@@ -1,4 +1,5 @@
 import { getBuildingProperties } from '../src/npm';
+import buildingSchema from '../schemas/building';
 
 test('should get a list of filtered building properties', () => {
   // Given
@@ -26,4 +27,13 @@ test('should get an array of extended objects of filtered building properties', 
   const list = getBuildingProperties(false, true);
   // When
   expect(list[0].key === 'name').toBeTruthy();
+});
+
+test('should have schema properties for the filter list', () => {
+  // Given
+  const list = getBuildingProperties();
+  // When
+  list.forEach(key => {
+    expect(buildingSchema.allOf[1].properties.properties.properties[key]).toBeTruthy();
+  });
 });

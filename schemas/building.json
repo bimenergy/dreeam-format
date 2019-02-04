@@ -420,7 +420,376 @@
               "$id": "solarCells",
               "title": "Solar cells",
               "description": "Solar cells are installed. This propety needs to be specified more"
-            }
+            },
+            "calcArea": {
+              "$id": "calcArea",
+              "title": "Calculated Area",
+              "type": "number",
+              "description": "The area that was used in the calculation"
+            },
+            "averageUValue": {
+              "$id": "calcAverageUValue",
+              "title": "Average U-value",
+              "type": "number",
+              "description": "The average U-value used in the calculation"
+            },
+            "addedLatentEnergy": {
+              "type": "integer",
+              "description": ""
+            },
+            "addedMoisture": {
+              "type": "integer",
+              "description": ""
+            },
+            "averageInnerPressure": {
+              "type": "number",
+              "description": "Average inner pressure"
+            },
+            "averageTemperature": {
+              "type": "number",
+              "description": "Average inner temperature"
+            },
+            "condCooling": {
+              "$id": "condCooling",
+              "title": "Condensor cooling",
+              "type": "number",
+              "description": ""
+            },
+            "condensorFanElectricity": {
+              "$id": "condensorFanElectricity",
+              "title": "Condensor Fan Electricity",
+              "type": "integer",
+              "description": "This is missing a input in VIP, but in BIM Energy Core (VipCore) we have cooling machine support similar to heat pump"
+            },
+            "convectiveSolarRadiation": {
+              "type": "number",
+              "description": ""
+            },
+            "coolerCirculationFanElectricity": {
+              "type": "integer",
+              "description": ""
+            },
+            "electricitySupply": {
+              "$id": "electricitySupply",
+              "title": "Electricity Supply",
+              "type": "number",
+              "description": "Summarizing electricity from electricitySupplyCM, electricitySupplyCCP, electricitySupplyEF, electricitySupplyIF, electricitySupplyHCP and electricitySupplyHP"
+            },
+            "electricitySupplyCCP": {
+              "$id": "electricitySupplyCCP",
+              "title": "Electricity Supply Cold Circulation Pump",
+              "type": "number",
+              "description": "Electricity supply from cold circulation pump"
+            },
+            "electricitySupplyCM": {
+              "$id": "electricitySupplyCM",
+              "title": "Electricity Supply Cooling Machine",
+              "type": "number",
+              "description": "Electricity supply from cooling machine"
+            },
+            "electricitySupplyEF": {
+              "$id": "electricitySupplyEF",
+              "title": "Electricity Supply Exhaust Fan",
+              "type": "number",
+              "description": "Electricity supply from exhaust fan"
+            },
+            "electricitySupplyHCP": {
+              "$id": "electricitySupplyHCP",
+              "title": "Electricity Supply Heat Circulation Pump",
+              "type": "number",
+              "description": "Electricity supply from heat circulation pump"
+            },
+            "electricitySupplyHP": {
+              "$id": "electricitySupplyHP",
+              "title": "Electricity Supply Heat Pump",
+              "type": "number",
+              "description": "Summarizing VPElVent, VPElRoom, VPElTVV"
+            },
+            "electricitySupplyIF": {
+              "$id": "electricitySupplyIF",
+              "title": "Electricity Supply Intake Fan?",
+              "type": "number",
+              "description": "Not sure"
+            },
+            "electricitySupplySCP": {
+              "$id": "electricitySupplySCP",
+              "title": "Electricity Supply Solar Circulation Pump",
+              "type": "integer",
+              "description": "Electricity from solar circulation pump"
+            },
+            "heatPumpHeatExchangeRoom": {
+              "$id": "heatPumpHeatExchangeRoom",
+              "title": "Heat Pump Heat Exchange Room",
+              "type": "number",
+              "description": ""
+            },
+            "heatPumpHeatExchangeVent": {
+              "$id": "heatPumpHeatExchangeVent",
+              "title": "Heat Pump Heat Exchange Ventilation",
+              "type": "integer",
+              "description": ""
+            },
+            "heatPumpHeatRecovery": {
+              "$id": "heatPumpHeatRecovery",
+              "title": "Heat Pump Heat Recovery",
+              "type": "number",
+              "description": "This is used as main post in gained energy"
+            },
+            "heatStorage": {
+              "$id": "heatStorage",
+              "title": "Heat Storage",
+              "type": "number",
+              "description": "Storage of heat in the building body"
+            },
+            "heating": {
+              "$id": "heating",
+              "title": "Heating",
+              "type": "number",
+              "description": "Heating summarized by heatingRoom, heatingVent, heatingHotw. Main property in gained balance"
+            },
+            "heatingHotw": {
+              "$id": "heatingHotw",
+              "title": "Heating Hot Water",
+              "type": "number",
+              "description": "Heating demand for hot water"
+            },
+            "heatingRoom": {
+              "$id": "heatingRoom",
+              "title": "Heating Room",
+              "type": "number",
+              "description": "Heating demand for room air"
+            },
+            "heatingVent": {
+              "$id": "heatingVent",
+              "title": "Heating Ventilation",
+              "type": "number",
+              "description": "Heating from ventilation"
+            },
+            "heatpumpHeatExchangeTVV": {
+              "$id": "heatpumpHeatExchangeTVV",
+              "title": "Heat Pump Heat Exchange Tapp Varm Vatten?",
+              "type": "integer",
+              "description": ""
+            },
+            "hotWater": {
+              "$id": "hotWater",
+              "title": "Hot Water",
+              "type": "number",
+              "description": "Demand for hot tap water. Post 44 in flow chart"
+            },
+            "infiltration": {
+              "type": "number",
+              "description": "Infiltration (Luftläckage), main property in emitted balance",
+              "$id": "infiltration",
+              "title": "Infiltration"
+            },
+            "latentStorage": {
+              "type": "number",
+              "description": "Storage of latent energy / moisture in the room air"
+            },
+            "outdoorMoisture": {
+              "type": "number",
+              "description": ""
+            },
+            "passiveHeating": {
+              "type": "integer",
+              "description": ""
+            },
+            "passiveCooling": {
+              "$id": "passiveCooling",
+              "title": "Passive Cooling",
+              "description": "",
+              "type": "number"
+            },
+            "person": {
+              "type": "integer",
+              "description": ""
+            },
+            "primeHeatDemand": {
+              "type": "integer",
+              "description": ""
+            },
+            "processRoom": {
+              "$id": "processRoom",
+              "title": "Process Energy Room",
+              "type": "number",
+              "description": "Used as post in gained balance (ref: 45)"
+            },
+            "roomMoisture": {
+              "type": "number",
+              "description": "Indoor humidity (g/kg)"
+            },
+            "roomRelativeMoisture": {
+              "type": "number",
+              "description": "Relative indoor humidity"
+            },
+            "sewerHeatExchange": {
+              "$id": "sewerHeatExchange",
+              "title": "Sewer Heat Exchange",
+              "type": "integer",
+              "description": "Used as post in gained balance"
+            },
+            "solar": {
+              "type": "number",
+              "description": ""
+            },
+            "solarHeatExchangeRoom": {
+              "type": "integer",
+              "description": ""
+            },
+            "solarHeatExchangeTVV": {
+              "type": "integer",
+              "description": ""
+            },
+            "solarHeatExchangeVent": {
+              "type": "integer",
+              "description": ""
+            },
+            "solarHeatRecovery": {
+              "type": "integer",
+              "description": ""
+            },
+            "solarPanelHeat": {
+              "type": "integer",
+              "description": ""
+            },
+            "solarRadiationThroughWindows": {
+              "$id": "solarRadiationThroughWindows",
+              "title": "Solar Radiation Through Windows",
+              "type": "number",
+              "description": "This is used as main post in gained energy"
+            },
+            "solarRadiationTowardsBuilding": {
+              "type": "number",
+              "description": ""
+            },
+            "transmission": {
+              "type": "number",
+              "description": "Transmission. One of the main posts in emitted balance",
+              "$id": "transmission",
+              "title": "Transmission"
+            },
+            "ventilation": {
+              "$id": "ventilation",
+              "title": "Ventilation",
+              "type": "number",
+              "description": "Ventilation. Main post for emitted balance"
+            },
+            "ventilationHeatExchange": {
+              "type": "integer",
+              "description": "Summary recovery ventilation heat exchange and relaxation"
+            },
+            "wetBulbTemperature": {
+              "type": "number",
+              "description": ""
+            },
+            "wasteWater": {
+              "$id": "wasteWater",
+              "title": "Waste Water",
+              "type": "number",
+              "description": "Not returned from core? Should be calculated from other values? How?"
+            },
+            "aTemp": {},
+            "activityEnergyExternal": {},
+            "activityEnergyInternal": {},
+            "activityId": {},
+            "addedLatentEnergy(moisture)": {},
+            "areaWindowsAndDoorsFloorArea": {},
+            "climateFileId": {},
+            "condenserCooling": {},
+            "condenserHeat": {},
+            "condenserHeatHotTapWater": {},
+            "condenserHeatRoom": {},
+            "condenserHeatVentilation": {},
+            "convectiveSolarRadiationThroughWindows": {},
+            "coolRecovery": {},
+            "coolingInRoomAir": {},
+            "coolingInSupplyAir": {},
+            "designPowerInfiltration": {},
+            "designPowerTransmission": {},
+            "designPowerVnetilation": {},
+            "districtCooling": {},
+            "envelopeArea": {},
+            "envelopeAreaXUValue": {},
+            "envelopeFloorArea": {},
+            "evaporatorCooling": {},
+            "exfiltrationLitrePerSecond": {},
+            "exhaustAirTemperatureCelsius": {},
+            "externalCondenserFan": {},
+            "externalHeatCapacity": {},
+            "externalSolarRadiation": {},
+            "heatEmisionTvvVvcExternal": {},
+            "heatEmisionTvvVvcInternal": {},
+            "heatRecoveryHeatPump": {},
+            "heatRecoverySolarCollector": {},
+            "heatRecoveryToHotTapWater": {},
+            "heatRecoveryVentilation": {},
+            "heatSupply": {},
+            "heatSupplyHotTapWater": {},
+            "heatSupplyRoom": {},
+            "heatSupplyVentilation": {},
+            "hotGasToHotTapWater": {},
+            "hotTapWaterSystem": {},
+            "humidityRatioIndoorGramPerKilogram": {},
+            "humidityRatioOutdoorGramPerKilogram": {},
+            "infiltrationAt50PaLitrePerSecond": {},
+            "infiltrationAt50PaLitrePerSecondPerSquareMeter": {},
+            "infiltrationLitrePerSecond": {},
+            "innerHeatCapacity": {},
+            "internalAirPressureAverage": {},
+            "internalAirPressurePascal": {},
+            "internalCirculationFan": {},
+            "latentCoolingInSupplyAir": {},
+            "latentCoolingRoom": {},
+            "latentCoolingVAV": {},
+            "lowestRoomTempHeating": {},
+            "operationEnergyExternal": {},
+            "operationEnergyInternal": {},
+            "personHeat": {},
+            "personHeatAverage": {},
+            "powerCirculationPumpCooling": {},
+            "powerCirculationPumpRoomHeating": {},
+            "powerCirculationPumpSolarCollector": {},
+            "powerCoolingMachine": {},
+            "powerExhaustAirFans": {},
+            "powerSupply": {},
+            "powerSupplyAirFans": {},
+            "powerSupplyToHeatPump": {},
+            "powerToHeatPumpForHotTapWater": {},
+            "powerToHeatPumpForRoomHeating": {},
+            "powerToHeatPumpForVentilation": {},
+            "primaryHeatingNeeds": {},
+            "processEnergy": {},
+            "processEnergyAverage": {},
+            "processEnergyToRoom": {},
+            "relativeHumidityIndoorPercent": {},
+            "relativeHumidityOutdoorPercent": {},
+            "roomHeatingSystem": {},
+            "sensibleCoolingInSupplyAir": {},
+            "sensibleCoolingRoom": {},
+            "sensibleCoolingVAV": {},
+            "sewage": {},
+            "solarCollectorHeat": {},
+            "solarCollectorHotTapWater": {},
+            "solarCollectorRoom": {},
+            "solarCollectorVentilation": {},
+            "structureMaterialTemperatureCelsius": {},
+            "temperatureControlledVentilationExtractFlowLitrePerSecond": {},
+            "temperatureControlledVentilationSupplyFlowLitrePerSecond": {},
+            "temperatureIndoorCelsius": {},
+            "temperatureOutdoorCelsius": {},
+            "timeConstant": {},
+            "totalFloorAreaFA": {},
+            "typologyId": {},
+            "uValue": {},
+            "underfloorHeatingTransmission": {},
+            "vav": {},
+            "vavCooling": {},
+            "ventilationAirRecirculation": {},
+            "ventilationAverage": {},
+            "ventilationUnit": {},
+            "wetBulbTemperatureIndoorCelsius": {},
+            "windSpeedMeterPerSecond": {}
           }
         },
         "rooms": {
