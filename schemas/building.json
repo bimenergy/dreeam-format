@@ -310,8 +310,8 @@
               "description": "This is the air flow in m3 per hour",
               "type": "number"
             },
-            "yearlyEnergyConsumption": {
-              "$id": "yearlyEnergyConsumption",
+            "energyConsumption": {
+              "$id": "energyConsumption",
               "title": "Yearly energy consumption",
               "description": "Measured yearly energy consumption in kWh",
               "type": "number"

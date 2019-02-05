@@ -6,6 +6,8 @@ import featureSchema from '../../schemas/feature';
 import heatPumpSchema from '../../schemas/heatPump';
 import buildingPropertyFilter from './buildingPropertyFilter';
 
+export * from './propertyUnits';
+
 export function Validator() {
   const ajv = Ajv({
     verbose: true,

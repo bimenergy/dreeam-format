@@ -1,5 +1,6 @@
-import { getBuildingProperties } from '../src/npm';
+import { getBuildingProperties, propertyMap } from '../src/npm';
 import buildingSchema from '../schemas/building';
+import { unitEnumeration } from '../src/npm/propertyUnits';
 
 test('should get a list of filtered building properties', () => {
   // Given
@@ -35,5 +36,23 @@ test('should have schema properties for the filter list', () => {
   // When
   list.forEach(key => {
     expect(buildingSchema.allOf[1].properties.properties.properties[key]).toBeTruthy();
+  });
+});
+
+test('should have property for each unit enumeration', () => {
+  // Given
+  const { properties } = buildingSchema.allOf[1].properties.properties;
+  // When
+  Object.keys(propertyMap).forEach(key => {
+    expect(properties[key]).toBeTruthy();
+  });
+});
+
+test('should have unit enumeration for each post in propertyMap', () => {
+  // Given
+  const properties = propertyMap;
+  // When
+  Object.keys(properties).forEach(key => {
+    expect(unitEnumeration[properties[key]]).toBeTruthy();
   });
 });
