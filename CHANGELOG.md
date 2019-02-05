@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/bimenergy/dreeam-format/compare/v0.3.12...v0.4.0) (2019-02-05)
+
+
+### Features
+
+* **building:** add ranges to several properties to use for validation ([3674a7a](https://github.com/bimenergy/dreeam-format/commit/3674a7a))
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/bimenergy/dreeam-format/compare/v0.3.1...v0.3.2) (2019-01-28)
 
