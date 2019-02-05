@@ -21,6 +21,7 @@ test('should get an extended object of filtered building properties', () => {
   const obj = getBuildingProperties(true, true);
   // When
   expect(obj.name.key === 'name').toBeTruthy();
+  expect(obj.exteriorWallUValue.decimals).toBe(2);
 });
 
 test('should get an array of extended objects of filtered building properties', () => {
@@ -28,6 +29,7 @@ test('should get an array of extended objects of filtered building properties', 
   const list = getBuildingProperties(false, true);
   // When
   expect(list[0].key === 'name').toBeTruthy();
+  expect(list[15].decimals).toBe(1);
 });
 
 test('should have schema properties for the filter list', () => {

@@ -33,11 +33,12 @@ export function generateHeatPump() {
   return defaults(heatPumpSchema);
 }
 
-function getExtendedProperty(key, schema) {
+function getExtendedProperty(key, schema, filterProperty) {
   return {
     key,
     type: schema.type,
     enum: schema.enum ? schema.enum : null,
+    decimals: filterProperty ? filterProperty.decimals : undefined,
   };
 }
 
@@ -49,7 +50,7 @@ export function getBuildingProperties(asObject, extended) {
     const obj = propertyFilterList.reduce((memo, key) => {
       if (extended) {
         const p = properties[key];
-        memo[key] = getExtendedProperty(key, p);
+        memo[key] = getExtendedProperty(key, p, buildingPropertyFilter[key]);
       } else {
         memo[key] = true;
       }
@@ -58,7 +59,7 @@ export function getBuildingProperties(asObject, extended) {
     return obj;
   } else if (extended) {
     return propertyFilterList.map(key =>
-      getExtendedProperty(key, properties[key]));
+      getExtendedProperty(key, properties[key], buildingPropertyFilter[key]));
   }
   return propertyFilterList;
 }
