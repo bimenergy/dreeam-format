@@ -14,12 +14,24 @@ export default {
   storeyHeightsBelowGround: false,
   yearOfConstruction: true,
   constructionWeight: true,
-  grossVolume: true,
-  netVolume: true,
-  energyReferenceVolume: true,
-  grossFloorArea: true,
-  netFloorArea: true,
-  energyReferenceArea: true,
+  grossVolume: {
+    decimals: 1,
+  },
+  netVolume: {
+    decimals: 1,
+  },
+  energyReferenceVolume: {
+    decimals: 1,
+  },
+  grossFloorArea: {
+    decimals: 1,
+  },
+  netFloorArea: {
+    decimals: 1,
+  },
+  energyReferenceArea: {
+    decimals: 1,
+  },
   buildingMainConstruction: true,
   numberOfBuildingUnits: true,
   numberOfRooms: true,
@@ -29,19 +41,45 @@ export default {
   electricityLighting: true,
   electricityAppliences: true,
   electricityAuxiliary: true,
-  exteriorWallUValue: true,
-  roofUValue: true,
-  sogUValue: true,
-  windowUValue: true,
-  glazing: true,
-  width: true,
-  length: true,
-  insideMinTemperature: true,
-  insideMaxTemperature: true,
-  exhaustAirFlow: true,
-  supplyAirFlow: true,
-  yearlyEnergyConsumption: true,
-  exteriorWallThickness: true,
+  exteriorWallUValue: {
+    decimals: 2,
+  },
+  roofUValue: {
+    decimals: 2,
+  },
+  sogUValue: {
+    decimals: 2,
+  },
+  windowUValue: {
+    decimals: 2,
+  },
+  glazing: {
+    decimals: 0,
+  },
+  width: {
+    decimals: 1,
+  },
+  length: {
+    decimals: 1,
+  },
+  insideMinTemperature: {
+    decimals: 1,
+  },
+  insideMaxTemperature: {
+    decimals: 1,
+  },
+  exhaustAirFlow: {
+    decimals: 2,
+  },
+  supplyAirFlow: {
+    decimals: 2,
+  },
+  yearlyEnergyConsumption: {
+    decimals: 0,
+  },
+  exteriorWallThickness: {
+    decimals: 2,
+  },
   longitude: true,
   latitude: true,
   conditionExteriorWalls: true,
@@ -58,18 +96,46 @@ export default {
   energyCarrier: true,
   energyCarrierYearOfConstruction: true,
   solarCells: true,
-  transmission: true,
-  infiltration: true,
-  ventilation: true,
-  coolingInRoomAir: true,
-  coolingInSupplyAir: true,
-  sewage: true,
-  ventilationHeatExchange: true,
-  heatRecoveryToHotTapWater: true,
-  heatRecoveryHeatPump: true,
-  solarEnergyThroughWindow: true,
-  processEnergy: true,
-  heatSupply: true,
-  powerSupply: true,
-  personHeat: true,
+  transmission: {
+    decimals: 1,
+  },
+  infiltration: {
+    decimals: 1,
+  },
+  ventilation: {
+    decimals: 1,
+  },
+  coolingInRoomAir: {
+    decimals: 1,
+  },
+  coolingInSupplyAir: {
+    decimals: 1,
+  },
+  sewage: {
+    decimals: 1,
+  },
+  ventilationHeatExchange: {
+    decimals: 1,
+  },
+  heatRecoveryToHotTapWater: {
+    decimals: 1,
+  },
+  heatRecoveryHeatPump: {
+    decimals: 1,
+  },
+  solarEnergyThroughWindow: {
+    decimals: 1,
+  },
+  processEnergy: {
+    decimals: 1,
+  },
+  heatSupply: {
+    decimals: 1,
+  },
+  powerSupply: {
+    decimals: 1,
+  },
+  personHeat: {
+    decimals: 1,
+  },
 };

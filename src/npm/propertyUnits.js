@@ -23,7 +23,6 @@ export const unitEnumeration = {
   cubicMeterPerDay: 'cubicMeterPerDay',
 };
 
-
 export const propertyMap = {
   measuredHeight: unitEnumeration.meter,
   storeyHeightsAboveGround: unitEnumeration.meter,
