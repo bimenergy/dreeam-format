@@ -38,6 +38,8 @@ function getExtendedProperty(key, schema, filterProperty) {
     key,
     type: schema.type,
     enum: schema.enum ? schema.enum : null,
+    min: schema.min,
+    max: schema.max,
     decimals: filterProperty ? filterProperty.decimals : undefined,
   };
 }

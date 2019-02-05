@@ -113,19 +113,25 @@
               "$id": "measuredHeight",
               "title": "Measured Height",
               "type": "number",
+              "min": 0,
+              "max": 1000,
               "description": "Measured height is the difference in [m] between the highest point of the roof structure and the defined footprint of the building"
             },
             "storeysAboveGround": {
               "$id": "storeysAboveGround",
               "title": "Storeys Above Ground",
               "type": "number",
-              "description": "Number of storeys above ground"
+              "description": "Number of storeys above ground",
+              "min": 1,
+              "max": 1000
             },
             "storeysBelowGround": {
               "$id": "storeysBelowGround",
               "title": "Storeys Below Ground",
               "type": "number",
-              "description": "Number of storeys below ground"
+              "description": "Number of storeys below ground",
+              "min": 0,
+              "max": 10
             },
             "storeyHeightsAboveGround": {
               "$id": "storeyHeightsAboveGround",
@@ -145,7 +151,9 @@
               "$id": "yearOfConstruction",
               "title": "Year of Construction",
               "description": "When the building was built, four digits",
-              "type": "integer"
+              "type": "integer",
+              "min": 1500,
+              "max": 2500
             },
             "constructionWeight": {
               "$id": "constructionWeight",
@@ -163,37 +171,49 @@
               "$id": "grossVolume",
               "title": "Gross Volume",
               "description": "Total volume delimited by the external building dimension",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "netVolume": {
               "$id": "netVolume",
               "title": "Net Volume",
               "description": "Total volume delimited by the internal building dimension",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "energyReferenceVolume": {
               "$id": "energyReferenceVolume",
               "title": "Energy Reference Volume",
               "description": "Volume to be used in thermal calculations",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "grossFloorArea": {
               "$id": "grossFloorArea",
               "title": "Gross Floor Area",
               "description": "Outer area of the building",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "netFloorArea": {
               "$id": "netFloorArea",
               "title": "Net Floor Area",
               "description": "Interior floor area of the building",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "energyReferenceArea": {
               "$id": "energyReferenceArea",
               "title": "Energy Reference Area",
               "description": "This is the heated area to use as reference in energy calculation",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000000
             },
             "buildingMainConstruction": {
               "$id": "buildingMainConstruction",
@@ -204,67 +224,97 @@
               "$id": "numberOfBuildingUnits",
               "title": "Number of building units",
               "description": "Custom property to specify number of building units in this building, this will generate the same amount of building units",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 100
             },
             "numberOfRooms": {
               "$id": "numberOfRooms",
               "title": "Number of rooms",
               "description": "Custom property to specify how many rooms in total in the building, initially this will be equally distributed between the building units",
-              "type": "number"
+              "type": "number",
+              "min": 1,
+              "max": 1000
             },
             "numberOfOccupants": {
               "$id": "numberOfOccupants",
               "title": "Number of Occupants",
-              "description": "Number of occupants that resided in the building. Will be used for other usage properties that use per person measures"
+              "description": "Number of occupants that resided in the building. Will be used for other usage properties that use per person measures",
+              "type": "number",
+              "min": 0,
+              "max": 1000
             },
             "occupancyTimePerPerson": {
               "$id": "occupancyTimePerPerson",
               "title": "Occupancy Time",
-              "description": "How many hours per person in the building per day"
+              "description": "How many hours per person in the building per day",
+              "type": "number",
+              "min": 0,
+              "max": 1000000
             },
             "hotWaterPerPerson": {
               "$id": "hotWaterPerPerson",
               "title": "Hot Water per Person",
-              "description": "How many m3 water per person and day"
+              "description": "How many m3 water per person and day",
+              "type": "number",
+              "min": 0,
+              "max": 1000000
             },
             "electricityLighting": {
               "$id": "electricityLighting",
               "title": "Electricity for lighting",
-              "description": "Electricity for lighting, kWh"
+              "description": "Electricity for lighting, kWh",
+              "type": "number",
+              "min": 0,
+              "max": 1000000
             },
             "electricityAppliences": {
               "$id": "electricityAppliences",
               "title": "Electricity for appliences",
-              "description": "Electricity for appliences, kWh"
+              "description": "Electricity for appliences, kWh",
+              "type": "number",
+              "min": 0,
+              "max": 1000000
             },
             "electricityAuxiliary": {
               "$id": "electricityAuxiliary",
               "title": "Electricity for auxiliaries",
-              "description": "Electricity for auxiliaries, kWh"
+              "description": "Electricity for auxiliaries, kWh",
+              "type": "number",
+              "min": 0,
+              "max": 1000000
             },
             "exteriorWallUValue": {
               "$id": "exteriorWallUValue",
               "title": "Exterior wall U-Value",
               "description": "One U-Value to use for all exterior wall in any orientation",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10
             },
             "roofUValue": {
               "$id": "roofUValue",
               "title": "Roof U-Value",
               "description": "A U-Value to use for the roof building parts",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10
             },
             "sogUValue": {
               "$id": "sogUValue",
               "title": "Slab on ground U-Value",
               "description": "A U-Value to use for the slab on ground",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10
             },
             "windowUValue": {
               "$id": "windowUValue",
               "title": "Window U-Value",
               "description": "A U-Value to use for the windows",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10
             },
             "glazing": {
               "$id": "glazing",
@@ -278,86 +328,111 @@
               "$id": "width",
               "title": "Width",
               "description": "For very simple box shaped buildings a width can be used",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10000
             },
             "length": {
               "$id": "length",
               "title": "Length",
               "description": "For very simple box shaped buildings a length can be used",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 10000
             },
             "insideMinTemperature": {
               "$id": "insideMinTemperature",
               "title": "Inside min temperature",
               "description": "This is the minimum expected inside temperature in the building if nothing else is specified",
-              "type": "number"
+              "type": "number",
+              "min": -100,
+              "max": 100
             },
             "insideMaxTemperature": {
               "$id": "insideMaxTemperature",
               "title": "Inside max temperature",
               "description": "This is the maximum expected inside temperature in the building if nothing else is specified",
-              "type": "number"
+              "type": "number",
+              "min": -100,
+              "max": 100
             },
             "exhaustAirFlow": {
               "$id": "exhaustAirFlow",
               "title": "Exhaust air flow",
               "description": "This is the air flow in m3 per hour",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 100
             },
             "supplyAirFlow": {
               "$id": "supplyAirFlow",
               "title": "Supply air flow",
               "description": "This is the air flow in m3 per hour",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 100
             },
             "energyConsumption": {
               "$id": "energyConsumption",
               "title": "Yearly energy consumption",
               "description": "Measured yearly energy consumption in kWh",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 1000000000
             },
             "exteriorWallThickness": {
               "$id": "exteriorWallThickness",
               "title": "Exterior wall thickness",
               "description": "Exterior wall thickness of in meters",
-              "type": "number"
+              "type": "number",
+              "min": 0,
+              "max": 100
             },
             "longitude": {
               "$id": "longitude",
               "title": "Longitude",
               "description": "Longitude",
-              "type": "number"
+              "type": "number",
+              "min": -180,
+              "max": 180
             },
             "latitude": {
               "$id": "latitude",
               "title": "Latitude",
               "description": "Latitude",
-              "type": "number"
+              "type": "number",
+              "min": -90,
+              "max": 90
             },
             "conditionExteriorWalls": {
               "$id": "conditionExteriorWalls",
               "title": "Condition of Exterior Walls",
-              "description": "An enumeration to be desided on how to quickly graduate condition"
+              "description": "An enumeration to be desided on how to quickly graduate condition",
+              "type": "string"
             },
             "conditionWindows": {
               "$id": "conditionWindows",
               "title": "Condition of windows",
-              "description": "An enumeration to be desided on how to quickly graduate condition"
+              "description": "An enumeration to be desided on how to quickly graduate condition",
+              "type": "string"
             },
             "conditionRoof": {
               "$id": "conditionRoof",
               "title": "Condition of Roof",
-              "description": "An enumeration to be desided on how to quickly graduate condition"
+              "description": "An enumeration to be desided on how to quickly graduate condition",
+              "type": "string"
             },
             "conditionHeatingSystem": {
               "$id": "conditionHeatingSystem",
               "title": "Condition of Heating System",
-              "description": "An enumeration to be desided on how to quickly graduate condition"
+              "description": "An enumeration to be desided on how to quickly graduate condition",
+              "type": "string"
             },
             "conditionVentilation": {
               "$id": "conditionVentilation",
               "title": "Condition of Ventilation",
-              "description": "An enumeration to be desided on how to quickly graduate condition"
+              "description": "An enumeration to be desided on how to quickly graduate condition",
+              "type": "string"
             },
             "ventilationType": {
               "$id": "ventilationType",
@@ -384,7 +459,8 @@
             "windowFrameMaterial": {
               "$id": "windowFrameMaterial",
               "title": "Window Frame Material",
-              "description": "Enumeration needed"
+              "description": "Enumeration needed",
+              "type": "string"
             },
             "shadingFactor": {
               "$id": "shadingFactor",
@@ -397,7 +473,8 @@
             "heatingSystemType": {
               "$id": "heatingSystemType",
               "title": "Heating System Type",
-              "description": "Enumeration needed"
+              "description": "Enumeration needed",
+              "type": "string"
             },
             "heatingSystemIsDecentralised": {
               "$id": "heatingSystemIsDecentralised",
@@ -408,13 +485,16 @@
             "energyCarrier": {
               "$id": "energyCarrier",
               "title": "Energy Carrier",
-              "description": "Energy carrier, like gas. Enumeration needed"
+              "description": "Energy carrier, like gas. Enumeration needed",
+              "type": "string"
             },
             "energyCarrierYearOfConstruction": {
               "$id": "energyCarrierYearOfConstruction",
               "title": "Energy Carrier, Year of Construction",
               "description": "Construction year of energy carrier, if any",
-              "type": "number"
+              "type": "number",
+              "min": 1800,
+              "max": 2500
             },
             "solarCells": {
               "$id": "solarCells",
@@ -425,7 +505,9 @@
               "$id": "calcArea",
               "title": "Calculated Area",
               "type": "number",
-              "description": "The area that was used in the calculation"
+              "description": "The area that was used in the calculation",
+              "min": 0,
+              "max": 1000000
             },
             "averageUValue": {
               "$id": "calcAverageUValue",

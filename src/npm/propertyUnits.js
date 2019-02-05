@@ -46,6 +46,7 @@ export const propertyMap = {
   glazing: unitEnumeration.percent,
   width: unitEnumeration.meter,
   length: unitEnumeration.meter,
+  shadingFactor: unitEnumeration.percent,
   insideMinTemperature: unitEnumeration.degreesCelcius,
   insideMaxTemperature: unitEnumeration.degreesCelcius,
   exhaustAirFlow: unitEnumeration.literPerSecondPerSquareMeter,
