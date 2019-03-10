@@ -404,6 +404,14 @@
               "min": -90,
               "max": 90
             },
+            "rotate": {
+              "$id": "rotate",
+              "title": "Rotate",
+              "description": "Rotation degrees from north",
+              "type": "number",
+              "min": -180,
+              "max": 180
+            },
             "conditionExteriorWalls": {
               "$id": "conditionExteriorWalls",
               "title": "Condition of Exterior Walls",
