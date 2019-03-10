@@ -27,7 +27,6 @@ export const propertyMap = {
   measuredHeight: unitEnumeration.meter,
   storeyHeightsAboveGround: unitEnumeration.meter,
   storeyHeightsBelowGround: unitEnumeration.meter,
-  constructionWeight: unitEnumeration.kilogram,
   grossVolume: unitEnumeration.cubicMeter,
   netVolume: unitEnumeration.cubicMeter,
   energyReferenceVolume: unitEnumeration.cubicMeter,
