@@ -62,6 +62,7 @@ export const propertyMap = {
   heatRecoveryToHotTapWater: unitEnumeration.kwhPerYear,
   heatRecoveryHeatPump: unitEnumeration.kwhPerYear,
   solarRadiationThroughWindows: unitEnumeration.kwhPerYear,
+  solarEnergyThroughWindow: unitEnumeration.kwhPerYear,
   processEnergy: unitEnumeration.kwhPerYear,
   heatSupply: unitEnumeration.kwhPerYear,
   powerSupply: unitEnumeration.kwhPerYear,
