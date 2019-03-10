@@ -863,6 +863,7 @@
             "solarCollectorHotTapWater": {},
             "solarCollectorRoom": {},
             "solarCollectorVentilation": {},
+            "solarEnergyThroughWindow": {},
             "structureMaterialTemperatureCelsius": {},
             "temperatureControlledVentilationExtractFlowLitrePerSecond": {},
             "temperatureControlledVentilationSupplyFlowLitrePerSecond": {},
