@@ -218,7 +218,13 @@
             "buildingMainConstruction": {
               "$id": "buildingMainConstruction",
               "title": "Building Main Construction",
-              "description": "This is used for any initial specification of a main construction in the climate shell"
+              "description": "This is used for any initial specification of a main construction in the climate shell",
+              "enum": [
+                "stone",
+                "brick",
+                "concrete",
+                "wood"
+              ]
             },
             "numberOfBuildingUnits": {
               "$id": "numberOfBuildingUnits",
