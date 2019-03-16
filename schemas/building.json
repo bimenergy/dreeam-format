@@ -386,6 +386,14 @@
               "min": 0,
               "max": 100
             },
+            "airTightness": {
+              "$id": "airTightness",
+              "title": "Air tightness",
+              "description": "Air tightness",
+              "type": "number",
+              "min": 0,
+              "max": 20
+            },
             "energyConsumption": {
               "$id": "energyConsumption",
               "title": "Yearly energy consumption",
