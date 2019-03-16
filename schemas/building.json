@@ -322,6 +322,14 @@
               "min": 0,
               "max": 10
             },
+            "windowFrameUValue": {
+              "$id": "windowFrameUValue",
+              "title": "Window frame U-Value",
+              "description": "A U-Value to use for the window frame",
+              "type": "number",
+              "min": 0,
+              "max": 10
+            },
             "glazing": {
               "$id": "glazing",
               "title": "Glazing",
