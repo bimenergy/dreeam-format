@@ -53,6 +53,9 @@ export default {
   windowUValue: {
     decimals: 2,
   },
+  windowFrameUValue: {
+    decimals: 2,
+  },
   glazing: {
     decimals: 0,
   },
@@ -72,6 +75,9 @@ export default {
     decimals: 2,
   },
   supplyAirFlow: {
+    decimals: 2,
+  },
+  airTightness: {
     decimals: 2,
   },
   yearlyEnergyConsumption: {
