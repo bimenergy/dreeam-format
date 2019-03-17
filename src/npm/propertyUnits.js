@@ -42,6 +42,7 @@ export const propertyMap = {
   roofUValue: unitEnumeration.wattPerSquareMeterKelvin,
   sogUValue: unitEnumeration.wattPerSquareMeterKelvin,
   windowUValue: unitEnumeration.wattPerSquareMeterKelvin,
+  windowFrameUValue: unitEnumeration.wattPerSquareMeterKelvin,
   glazing: unitEnumeration.percent,
   width: unitEnumeration.meter,
   length: unitEnumeration.meter,
