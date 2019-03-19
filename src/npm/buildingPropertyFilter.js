@@ -14,6 +14,9 @@ export default {
   storeyHeightsBelowGround: false,
   yearOfConstruction: true,
   constructionWeight: true,
+  rotate: {
+    decimals: 1,
+  },
   grossVolume: {
     decimals: 1,
   },
