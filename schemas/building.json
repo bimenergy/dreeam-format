@@ -234,6 +234,14 @@
               "min": 1,
               "max": 100
             },
+            "numberOfApartments": {
+              "$id": "numberOfApartments",
+              "title": "Number of apartments",
+              "description": "Custom property to specify number of apartmets",
+              "type": "number",
+              "min": 1,
+              "max": 1000
+            },
             "numberOfRooms": {
               "$id": "numberOfRooms",
               "title": "Number of rooms",
@@ -410,6 +418,31 @@
               "min": 0,
               "max": 100
             },
+            "exteriorWallInsideMaterial": {
+              "$id": "exteriorWallInsideMaterial",
+              "title": "Exterior wall inside material",
+              "description": "",
+              "type": "string",
+              "enum": []
+            },
+            "exteriorWallOutsideMaterial": {
+              "$id": "exteriorWallInsideMaterial",
+              "title": "Exterior wall inside material",
+              "description": "",
+              "type": "string",
+              "enum": []
+            },
+            "exteriorWallInsulation": {
+              "$id": "exterior",
+              "title": "Exterior wall insulation",
+              "description": "Insulation level of exterior wall",
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
+            },
             "longitude": {
               "$id": "longitude",
               "title": "Longitude",
@@ -437,32 +470,122 @@
             "conditionExteriorWalls": {
               "$id": "conditionExteriorWalls",
               "title": "Condition of Exterior Walls",
-              "description": "An enumeration to be desided on how to quickly graduate condition",
-              "type": "string"
+              "description": "An enumeration to be decided on how to quickly graduate condition",
+              "type": "string",
+              "enum": [
+                "poor",
+                "ok",
+                "good"
+              ]
             },
             "conditionWindows": {
               "$id": "conditionWindows",
               "title": "Condition of windows",
-              "description": "An enumeration to be desided on how to quickly graduate condition",
-              "type": "string"
+              "description": "An enumeration to be decided on how to quickly graduate condition",
+              "type": "string",
+              "enum": [
+                "poor",
+                "ok",
+                "good"
+              ]
             },
             "conditionRoof": {
               "$id": "conditionRoof",
               "title": "Condition of Roof",
-              "description": "An enumeration to be desided on how to quickly graduate condition",
-              "type": "string"
+              "description": "An enumeration to be decided on how to quickly graduate condition",
+              "type": "string",
+              "enum": [
+                "poor",
+                "ok",
+                "good"
+              ]
             },
             "conditionHeatingSystem": {
               "$id": "conditionHeatingSystem",
               "title": "Condition of Heating System",
-              "description": "An enumeration to be desided on how to quickly graduate condition",
-              "type": "string"
+              "description": "An enumeration to be decided on how to quickly graduate condition",
+              "type": "string",
+              "enum": [
+                "poor",
+                "ok",
+                "good"
+              ]
             },
             "conditionVentilation": {
               "$id": "conditionVentilation",
               "title": "Condition of Ventilation",
-              "description": "An enumeration to be desided on how to quickly graduate condition",
-              "type": "string"
+              "description": "An enumeration to be decided on how to quickly graduate condition",
+              "type": "string",
+              "enum": [
+                "poor",
+                "ok",
+                "good"
+              ]
+            },
+            "exteriorWallRenovatedYear": {
+              "$id": "exteriorWallRenovatedYear",
+              "title": "Exterior walls renovation year",
+              "description": "Exterior walls are renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
+            },
+            "windowsRenovatedYear": {
+              "$id": "windowsRenovatedYear",
+              "title": "Windows renovation year",
+              "description": "Windows are renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
+            },
+            "roofRenovatedYear": {
+              "$id": "roofRenovatedYear",
+              "title": "Roof renovation year",
+              "description": "Roof is renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
+            },
+            "roofShape": {
+              "$id": "roofShape",
+              "title": "Roof Shape",
+              "description": "Roof shape list",
+              "type": "string",
+              "enum": [
+                "flat",
+                "hip",
+                "gabled"
+              ]
+            },
+            "heatedAttic": {
+              "$id": "heatedAttic",
+              "title": "Heated attic",
+              "description": "If roof shape has volume, is this volume heated",
+              "type": "boolean"
+            },
+            "ventilationRenovatedYear": {
+              "$id": "ventilationRenovatedYear",
+              "title": "Ventilation renovation year",
+              "description": "Ventilation is renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
+            },
+            "coolingSystemRenovatedYear": {
+              "$id": "coolingSystemRenovatedYear",
+              "title": "Cooling system renovation year",
+              "description": "Cooling system is renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
+            },
+            "heatingSystemRenovatedYear": {
+              "$id": "heatingSystemRenovatedYear",
+              "title": "Heating system renovation year",
+              "description": "Heating system is renovated what year",
+              "type": "number",
+              "min": 0,
+              "max": 2500
             },
             "ventilationType": {
               "$id": "ventilationType",
@@ -490,7 +613,13 @@
               "$id": "windowFrameMaterial",
               "title": "Window Frame Material",
               "description": "Enumeration needed",
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "plastic",
+                "wooden",
+                "aluminium",
+                "woodProtected"
+              ]
             },
             "shadingFactor": {
               "$id": "shadingFactor",
@@ -499,6 +628,18 @@
               "type": "number",
               "min": 0,
               "max": 100
+            },
+            "shadingLevel": {
+              "$id": "shadingLevel",
+              "title": "Shading Level",
+              "description": "How much shading in general. A standard shading is when buildings around are in the same type and shape",
+              "type": "string",
+              "enum": [
+                "none",
+                "low",
+                "standard",
+                "high"
+              ]
             },
             "heatingSystemType": {
               "$id": "heatingSystemType",
@@ -521,8 +662,65 @@
             "energyCarrier": {
               "$id": "energyCarrier",
               "title": "Energy Carrier",
-              "description": "Energy carrier, like gas. Enumeration needed",
-              "type": "string"
+              "description": "Energy carrier",
+              "type": "string",
+              "enum": [
+                "gas",
+                "oil",
+                "wood",
+                "electricity",
+                "districtHeating"
+              ]
+            },
+            "powerOfBoiler": {
+              "$id": "powerOfBoiler",
+              "title": "Power of boiler",
+              "description": "Power of boiler",
+              "type": "number",
+              "min": 0,
+              "max": 10000000
+            },
+            "circuitTemperatures": {
+              "$id": "circuitTemperatures",
+              "title": "Temperature in circuits",
+              "description": "Temperature levels of distribution in circuits",
+              "type": "array",
+              "min": -100,
+              "max": 1000
+            },
+            "circuitInsulation": {
+              "$id": "circuitInsulation",
+              "title": "Insulation of circuits",
+              "description": "Distribution circuits insulation level",
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "partially"
+              ]
+            },
+            "hotWaterSystemType": {
+              "$id": "hotWaterSystemType",
+              "title": "Hot water system type",
+              "description": "Hot water system type",
+              "type": "string",
+              "enum": [
+                "combined",
+                "separate central",
+                "separate decentral"
+              ]
+            },
+            "accessToHeatingInfrastructureGas": {
+              "$id": "accessToHeatingInfrastructureGas",
+              "title": "Access to Heating Infrastructure - Gas",
+              "description": "If there is access to connect gas",
+              "type": "boolean"
+            },
+            "accessToHeatingInfrastructureDistrictHeating": {
+              "$id": "accessToHeatingInfrastructureDistrictHeating",
+              "title": "Access to Heating Infrastructure - DistrictHeating",
+              "description": "If there is access to connect to district heating",
+              "type": "boolean"
             },
             "energyCarrierYearOfConstruction": {
               "$id": "energyCarrierYearOfConstruction",
@@ -532,6 +730,13 @@
               "min": 1800,
               "max": 2500
             },
+            "mechanicVentilationSystem": {
+              "$id": "mechanicVentilationSystem",
+              "title": "Mechanic ventilation system",
+              "description": "Mechanic ventilation system",
+              "type": "boolean"
+            },
+
             "solarCells": {
               "$id": "solarCells",
               "title": "Solar cells",
