@@ -96,6 +96,28 @@
             "postalCode": {
               "type": "string"
             },
+            "geometryType": {
+              "$id": "geometryType",
+              "title": "Geometry type",
+              "description": "Type of geometry in general",
+              "type": "enum",
+              "enum": [
+                "singleStructure",
+                "perimeterBlock",
+                "openBlock"
+              ]
+            },
+            "geometryAttachment": {
+              "$id": "geometryType",
+              "title": "Building Attachments",
+              "description": "Describes how this building is attached to other buildings",
+              "type": "enum",
+              "enum": [
+                "detached",
+                "oneSideAttached",
+                "twoSidesAttached"
+              ]
+            },
             "buildingType": {
               "$id": "buildingType",
               "title": "Building Type",
@@ -116,6 +138,13 @@
               "min": 0,
               "max": 1000,
               "description": "Measured height is the difference in [m] between the highest point of the roof structure and the defined footprint of the building"
+            },
+            "averageStoreyHeight": {
+              "$id": "averageStoreyHeight",
+              "title": "Average floor height",
+              "type": "number",
+              "min": 1,
+              "max": 10
             },
             "storeysAboveGround": {
               "$id": "storeysAboveGround",
@@ -146,6 +175,20 @@
               "type": "array",
               "description": "List order for storey heights below ground: first floor below ground, second floor below ground,... ",
               "items": {"type": "number"}
+            },
+            "hasBalconies": {
+              "$id": "hasBalconies",
+              "title": "Has Balconies",
+              "description": "If building has balconies or not",
+              "type": "boolean"
+            },
+            "numberOfBalconies": {
+              "$id": "numberOfBalconies",
+              "title": "Number of Balconies",
+              "description": "How many balconies has the building",
+              "type": "number",
+              "min": 0,
+              "max": 1000
             },
             "yearOfConstruction": {
               "$id": "yearOfConstruction",
@@ -418,6 +461,25 @@
               "min": 0,
               "max": 100
             },
+            "exteriorWallInsulation": {
+              "$id": "exterior",
+              "title": "Exterior wall insulation",
+              "description": "Insulation level of exterior wall",
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
+            },
+            "exteriorWallInsulationThickness": {
+              "$id": "exteriorWallInsulationThickness",
+              "title": "Exterior wall insulation thickness",
+              "description": "The thickness in m of the exterior wall insulation",
+              "type": "number",
+              "min": 0,
+              "max": 1
+            },
             "exteriorWallInsideMaterial": {
               "$id": "exteriorWallInsideMaterial",
               "title": "Exterior wall inside material",
@@ -431,17 +493,6 @@
               "description": "",
               "type": "string",
               "enum": []
-            },
-            "exteriorWallInsulation": {
-              "$id": "exterior",
-              "title": "Exterior wall insulation",
-              "description": "Insulation level of exterior wall",
-              "type": "string",
-              "enum": [
-                "yes",
-                "no",
-                "dontknow"
-              ]
             },
             "longitude": {
               "$id": "longitude",
@@ -475,7 +526,8 @@
               "enum": [
                 "poor",
                 "ok",
-                "good"
+                "good",
+                "excellent"
               ]
             },
             "conditionWindows": {
@@ -486,7 +538,8 @@
               "enum": [
                 "poor",
                 "ok",
-                "good"
+                "good",
+                "excellent"
               ]
             },
             "conditionRoof": {
@@ -497,7 +550,8 @@
               "enum": [
                 "poor",
                 "ok",
-                "good"
+                "good",
+                "excellent"
               ]
             },
             "conditionHeatingSystem": {
@@ -508,7 +562,8 @@
               "enum": [
                 "poor",
                 "ok",
-                "good"
+                "good",
+                "excellent"
               ]
             },
             "conditionVentilation": {
@@ -519,7 +574,8 @@
               "enum": [
                 "poor",
                 "ok",
-                "good"
+                "good",
+                "excellent"
               ]
             },
             "exteriorWallRenovatedYear": {
@@ -529,6 +585,14 @@
               "type": "number",
               "min": 0,
               "max": 2500
+            },
+            "exteriorWallRenovationDegree": {
+              "$id": "exteriorWallRenovationDegree",
+              "title": "Wall renovation degree",
+              "description": "To what degree in % the wall has been renovated",
+              "type": "number",
+              "min": 0,
+              "max": 100
             },
             "windowsRenovatedYear": {
               "$id": "windowsRenovatedYear",
@@ -606,7 +670,9 @@
               "enum": [
                 "single",
                 "double",
-                "triple"
+                "doubleWithCoating",
+                "triple",
+                "tripleWithCoating"
               ]
             },
             "windowFrameMaterial": {
@@ -618,7 +684,8 @@
                 "plastic",
                 "wooden",
                 "aluminium",
-                "woodProtected"
+                "woodProtected",
+                "woodAluminium"
               ]
             },
             "shadingFactor": {
