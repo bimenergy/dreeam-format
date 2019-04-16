@@ -96,11 +96,11 @@
             "postalCode": {
               "type": "string"
             },
-            "geometryType": {
+            "geometryType": {
               "$id": "geometryType",
               "title": "Geometry type",
               "description": "Type of geometry in general",
-              "type": "enum",
+              "type": "string",
               "enum": [
                 "singleStructure",
                 "perimeterBlock",
@@ -108,10 +108,10 @@
               ]
             },
             "geometryAttachment": {
-              "$id": "geometryType",
+              "$id": "geometryAttachment",
               "title": "Building Attachments",
               "description": "Describes how this building is attached to other buildings",
-              "type": "enum",
+              "type": "string",
               "enum": [
                 "detached",
                 "oneSideAttached",
@@ -484,15 +484,13 @@
               "$id": "exteriorWallInsideMaterial",
               "title": "Exterior wall inside material",
               "description": "",
-              "type": "string",
-              "enum": []
+              "type": "string"
             },
             "exteriorWallOutsideMaterial": {
               "$id": "exteriorWallInsideMaterial",
               "title": "Exterior wall inside material",
               "description": "",
-              "type": "string",
-              "enum": []
+              "type": "string"
             },
             "longitude": {
               "$id": "longitude",

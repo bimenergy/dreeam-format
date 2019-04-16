@@ -5,6 +5,7 @@ import buildingSchema from '../../schemas/building';
 import featureSchema from '../../schemas/feature';
 import heatPumpSchema from '../../schemas/heatPump';
 import buildingPropertyFilter from './buildingPropertyFilter';
+import en from '../languages/en';
 
 export * from './propertyUnits';
 
@@ -64,4 +65,11 @@ export function getBuildingProperties(asObject, extended) {
       getExtendedProperty(key, properties[key], buildingPropertyFilter[key]));
   }
   return propertyFilterList;
+}
+
+export function getTranslation(lang) {
+  const translations = {
+    en,
+  };
+  return translations[lang] || {};
 }
