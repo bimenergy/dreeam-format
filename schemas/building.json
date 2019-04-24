@@ -461,10 +461,10 @@
               "min": 0,
               "max": 100
             },
-            "exteriorWallInsulation": {
-              "$id": "exterior",
-              "title": "Exterior wall insulation",
-              "description": "Insulation level of exterior wall",
+            "exteriorWallIsInsulated": {
+              "$id": "exteriorWallIsInsulated",
+              "title": "Exterior wall is insulated",
+              "description": "If exterior wall is insulated or not",
               "type": "string",
               "enum": [
                 "yes",
@@ -618,6 +618,25 @@
                 "hip",
                 "gabled"
               ]
+            },
+            "roofIsRenovated": {
+              "$id": "roofIsRenovated",
+              "title": "Roof is renovated",
+              "description": "If roof is renovated or not",
+              "type": "enum",
+              "enum": [
+                "no",
+                "yes",
+                "dontknow"
+              ]
+            },
+            "roofAngle": {
+              "$id": "roofAngle",
+              "title": "Roof angle",
+              "description": "Roof angle from horizontal 0",
+              "type": "number",
+              "min": 0,
+              "max": 60
             },
             "heatedAttic": {
               "$id": "heatedAttic",
