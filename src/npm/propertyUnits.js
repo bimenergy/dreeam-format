@@ -54,6 +54,7 @@ export const propertyMap = {
   supplyAirFlow: unitEnumeration.literPerSecondPerSquareMeter,
   energyConsumption: unitEnumeration.kwhPerYear,
   exteriorWallThickness: unitEnumeration.meter,
+  exteriorWallInsulationThickness: unitEnumeration.meter,
   transmission: unitEnumeration.kwhPerYear,
   infiltration: unitEnumeration.kwhPerYear,
   ventilation: unitEnumeration.kwhPerYear,
