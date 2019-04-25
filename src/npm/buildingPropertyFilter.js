@@ -49,6 +49,10 @@ export default {
   electricityLighting: true,
   electricityAppliences: true,
   electricityAuxiliary: true,
+  exteriorWallIsInsulated: true,
+  exteriorWallThickness: {
+    decimals: 4,
+  },
   exteriorWallUValue: {
     decimals: 2,
   },
