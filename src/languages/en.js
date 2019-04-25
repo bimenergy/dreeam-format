@@ -85,7 +85,7 @@ export default {
     buildingMainConstruction: 'Building main construction',
     exteriorWallThickness: 'Exterior wall thickness',
     exteriorWallUValue: 'Exterior wall U-value',
-    exteriorWallInsulation: 'Exterior walls are insulated?',
+    exteriorWallIsInsulated: 'Exterior walls are insulated?',
     exteriorWallInsulationThickness: 'Exterior wall insulation thickness',
     roofUValue: 'Roof U-value',
     windowUValue: 'Window U-value',
