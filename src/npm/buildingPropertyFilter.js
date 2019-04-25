@@ -50,7 +50,7 @@ export default {
   electricityAppliences: true,
   electricityAuxiliary: true,
   exteriorWallIsInsulated: true,
-  exteriorWallThickness: {
+  exteriorWallInsulationThickness: {
     decimals: 4,
   },
   exteriorWallUValue: {
