@@ -22,6 +22,7 @@ export const unitEnumeration = {
   hoursPerDay: 'hoursPerDay',
   cubicMeterPerDay: 'cubicMeterPerDay',
   degreesFromNorth: 'degreesFromNorth',
+  degrees: 'degrees',
 };
 
 export const propertyMap = {
@@ -72,4 +73,5 @@ export const propertyMap = {
   personHeat: unitEnumeration.kwhPerYear,
   airTightness: unitEnumeration.literPerSecondPerSquareMeter,
   rotate: unitEnumeration.degreesFromNorth,
+  roofAngle: unitEnumeration.degrees,
 };

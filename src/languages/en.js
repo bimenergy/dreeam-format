@@ -157,7 +157,13 @@ export default {
     double: 'Double',
     triple: 'Triple',
     natural: 'Natural',
+    hip: 'Hip roof',
+    gabled: 'Gabled roof',
+    flat: 'Flat roof',
+    roofShape: 'Roof shape',
+    roofAngle: 'Roof angle',
     kwhPerYear: 'kWh/year',
     degreesFromNorth: '°',
+    degrees: '°',
   },
 };
