@@ -100,6 +100,7 @@ export default {
   },
   longitude: true,
   latitude: true,
+  roofShape: true,
   conditionExteriorWalls: true,
   conditionWindows: true,
   conditionRoof: true,

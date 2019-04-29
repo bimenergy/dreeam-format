@@ -623,7 +623,7 @@
               "$id": "roofIsRenovated",
               "title": "Roof is renovated",
               "description": "If roof is renovated or not",
-              "type": "enum",
+              "type": "string",
               "enum": [
                 "no",
                 "yes",
