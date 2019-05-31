@@ -98,6 +98,9 @@ export default {
   exteriorWallThickness: {
     decimals: 2,
   },
+  energyConsumption: {
+    decimals: 0,
+  },
   longitude: true,
   latitude: true,
   roofShape: true,
