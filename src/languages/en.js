@@ -65,6 +65,7 @@ export default {
     storeyHeightsBelowGround: 'Storey heights below ground',
     numberOfApartments: 'Number of apartments',
     numberOfRooms: 'Number of rooms',
+    numberOfBuildingUnits: 'Number of building units',
     yearOfConstruction: 'Year of construction',
     yearOfDemolition: 'Year of demolition',
     constructionWeight: 'Construction weight',
