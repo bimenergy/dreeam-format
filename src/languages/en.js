@@ -220,5 +220,11 @@ export default {
     accessToHeatingInfrastructureGas: 'Access to heating infrastructure, gas',
     accessToHeatingInfrastructureDistrictHeating: 'Access to heating infrastructure, district heating',
     coolingSystemRenovatedYear: 'Cooling system year of renovation',
+    energyConsumption: 'Energy consumption',
+    none: 'None',
+    low: 'Low',
+    standard: 'Standard',
+    high: 'High',
+    partially: 'Partially'
   },
 };

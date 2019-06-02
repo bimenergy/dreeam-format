@@ -179,4 +179,6 @@ export default {
   accessToHeatingInfrastructureDistrictHeating: true,
   coolingSystemRenovatedYear: true,
   ventilationRenovatedYear: true,
+  roofIsRenovated: true,
+  mechanicVentilationSystem: true,
 };
