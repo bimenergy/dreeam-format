@@ -180,7 +180,12 @@
               "$id": "hasBalconies",
               "title": "Has Balconies",
               "description": "If building has balconies or not",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
             "numberOfBalconies": {
               "$id": "numberOfBalconies",
@@ -642,7 +647,12 @@
               "$id": "heatedAttic",
               "title": "Heated attic",
               "description": "If roof shape has volume, is this volume heated",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
             "ventilationRenovatedYear": {
               "$id": "ventilationRenovatedYear",
@@ -741,7 +751,12 @@
               "$id": "heatingSystemIsDecentralised",
               "title": "Heating system is Decentralised",
               "description": "If Heating system is Decentralised",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
             "energyCarrier": {
               "$id": "energyCarrier",
@@ -798,13 +813,23 @@
               "$id": "accessToHeatingInfrastructureGas",
               "title": "Access to Heating Infrastructure - Gas",
               "description": "If there is access to connect gas",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
             "accessToHeatingInfrastructureDistrictHeating": {
               "$id": "accessToHeatingInfrastructureDistrictHeating",
               "title": "Access to Heating Infrastructure - DistrictHeating",
               "description": "If there is access to connect to district heating",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
             "energyCarrierYearOfConstruction": {
               "$id": "energyCarrierYearOfConstruction",
@@ -818,7 +843,12 @@
               "$id": "mechanicVentilationSystem",
               "title": "Mechanic ventilation system",
               "description": "Mechanic ventilation system",
-              "type": "boolean"
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "dontknow"
+              ]
             },
 
             "solarCells": {
