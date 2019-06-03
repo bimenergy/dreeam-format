@@ -44,11 +44,21 @@ export default {
   numberOfBuildingUnits: true,
   numberOfRooms: true,
   numberOfOccupants: true,
-  occupancyTimePerPerson: true,
-  hotWaterPerPerson: true,
-  electricityLighting: true,
-  electricityAppliences: true,
-  electricityAuxiliary: true,
+  occupancyTimePerPerson: {
+    decimals: 1,
+  },
+  hotWaterPerPerson: {
+    decimals: 0,
+  },
+  electricityLighting: {
+    decimals: 1,
+  },
+  electricityAppliences: {
+    decimals: 1,
+  },
+  electricityAuxiliary: {
+    decimals: 1,
+  },
   exteriorWallIsInsulated: true,
   exteriorWallInsulationThickness: {
     decimals: 4,
