@@ -225,6 +225,6 @@ export default {
     low: 'Low',
     standard: 'Standard',
     high: 'High',
-    partially: 'Partially'
+    partially: 'Partially',
   },
 };
