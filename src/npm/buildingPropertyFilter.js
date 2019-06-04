@@ -48,7 +48,7 @@ export default {
     decimals: 1,
   },
   hotWaterPerPerson: {
-    decimals: 0,
+    decimals: 3,
   },
   electricityLighting: {
     decimals: 1,
