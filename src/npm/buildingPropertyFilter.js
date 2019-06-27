@@ -78,6 +78,9 @@ export default {
   windowFrameUValue: {
     decimals: 2,
   },
+  interiorFloorUValue: {
+    decimals: 2,
+  },
   glazing: {
     decimals: 0,
   },

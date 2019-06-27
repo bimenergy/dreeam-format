@@ -386,6 +386,14 @@
               "min": 0,
               "max": 10
             },
+            "interiorFloorUValue": {
+              "$id": "interiorFloorUValue",
+              "title": "Interior floor U-Value",
+              "description": "A U-Value to use for the interior floor",
+              "type": "number",
+              "min": 0,
+              "max": 10
+            },
             "glazing": {
               "$id": "glazing",
               "title": "Glazing",
