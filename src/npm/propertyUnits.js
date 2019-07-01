@@ -23,6 +23,7 @@ export const unitEnumeration = {
   cubicMeterPerDay: 'cubicMeterPerDay',
   degreesFromNorth: 'degreesFromNorth',
   degrees: 'degrees',
+  personPerSquareMeter: 'personPerSquareMeter',
 };
 
 export const propertyMap = {
@@ -37,8 +38,10 @@ export const propertyMap = {
   energyReferenceArea: unitEnumeration.squareMeter,
   occupancyTimePerPerson: unitEnumeration.hoursPerDay,
   hotWaterPerPerson: unitEnumeration.cubicMeterPerDay,
-  electricityLighting: unitEnumeration.kwhPerSquareMeterPerYear,
-  electricityAppliences: unitEnumeration.kwhPerSquareMeterPerYear,
+  electricityLighting: unitEnumeration.kwhPerYear,
+  electricityLightingM2: unitEnumeration.kwhPerSquareMeterPerYear,
+  electricityAppliences: unitEnumeration.kwhPerYear,
+  electricityAppliencesM2: unitEnumeration.kwhPerSquareMeterPerYear,
   electricityAuxiliary: unitEnumeration.kwhPerSquareMeterPerYear,
   exteriorWallUValue: unitEnumeration.wattPerSquareMeterKelvin,
   roofUValue: unitEnumeration.wattPerSquareMeterKelvin,

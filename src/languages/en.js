@@ -147,6 +147,7 @@ export default {
     cubicMeterPerDay: 'm³/day',
     wattPerSquareMeter: 'W/m²',
     literPerSecondPerSquareMeter: 'l/s m²',
+    personPerSquareMeter: 'persons/m²',
     apartmentBlock: 'Apartment block',
     multiFamilyHouse: 'Multi-family house',
     rowHouse: 'Row house',
