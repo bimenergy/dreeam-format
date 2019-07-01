@@ -325,7 +325,7 @@
             "electricityLighting": {
               "$id": "electricityLighting",
               "title": "Electricity for lighting",
-              "description": "Electricity for lighting, kWh",
+              "description": "Electricity for lighting, kWh per m2",
               "type": "number",
               "min": 0,
               "max": 1000000
@@ -333,7 +333,7 @@
             "electricityAppliences": {
               "$id": "electricityAppliences",
               "title": "Electricity for appliences",
-              "description": "Electricity for appliences, kWh",
+              "description": "Electricity for appliences, kWh per m2",
               "type": "number",
               "min": 0,
               "max": 1000000
@@ -341,7 +341,7 @@
             "electricityAuxiliary": {
               "$id": "electricityAuxiliary",
               "title": "Electricity for auxiliaries",
-              "description": "Electricity for auxiliaries, kWh",
+              "description": "Electricity for auxiliaries, kWh per m2",
               "type": "number",
               "min": 0,
               "max": 1000000
