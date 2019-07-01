@@ -164,6 +164,7 @@ export default {
     roofShape: 'Roof shape',
     roofAngle: 'Roof angle',
     kwhPerYear: 'kWh/year',
+    kwhPerSquareMeterPerYear: 'kWh/m²/year',
     degreesFromNorth: '°',
     degrees: '°',
     yes: 'Yes',
