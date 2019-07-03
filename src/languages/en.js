@@ -89,6 +89,7 @@ export default {
     exteriorWallIsInsulated: 'Exterior walls are insulated?',
     exteriorWallInsulationThickness: 'Exterior wall insulation thickness',
     roofUValue: 'Roof U-value',
+    interiorFloorUValue: 'Interior floor U-value',
     windowUValue: 'Window U-value',
     windowFrameUValue: 'Window frame U-value',
     sogUValue: 'Ground slab U-value',
