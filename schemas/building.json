@@ -694,7 +694,7 @@
               "enum": [
                 "natural",
                 "exhaustAir",
-                "supplyExhaustAir",
+                "exhaustSupplyAir",
                 "heatRecovery"
               ]
             },
