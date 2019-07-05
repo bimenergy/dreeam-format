@@ -694,6 +694,7 @@
               "enum": [
                 "natural",
                 "exhaustAir",
+                "supplyExhaustAir",
                 "heatRecovery"
               ]
             },
@@ -750,7 +751,10 @@
               "type": "string",
               "enum": [
                 "district",
-                "heatPump",
+                "heatPumpGeothermal",
+                "heatPumpAirAir",
+                "heatPumpExhaust",
+                "heatPumpAirWater",
                 "electricity",
                 "boiler"
               ]
