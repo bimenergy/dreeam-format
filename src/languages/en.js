@@ -237,5 +237,6 @@ export default {
     standard: 'Standard',
     high: 'High',
     partially: 'Partially',
+    people: 'People',
   },
 };

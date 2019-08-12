@@ -24,6 +24,7 @@ export const unitEnumeration = {
   degreesFromNorth: 'degreesFromNorth',
   degrees: 'degrees',
   personPerSquareMeter: 'personPerSquareMeter',
+  people: 'people',
 };
 
 export const propertyMap = {
@@ -78,4 +79,5 @@ export const propertyMap = {
   airTightness: unitEnumeration.literPerSecondPerSquareMeter,
   rotate: unitEnumeration.degreesFromNorth,
   roofAngle: unitEnumeration.degrees,
+  numberOfOccupants: unitEnumeration.people,
 };
