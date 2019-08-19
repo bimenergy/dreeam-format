@@ -1,6 +1,6 @@
 {
   "name": "dreeam-format",
-  "version": "0.4.41",
+  "version": "0.4.42",
   "description": "",
   "main": "dist/npm/index.js",
   "scripts": {
