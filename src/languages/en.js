@@ -238,5 +238,7 @@ export default {
     high: 'High',
     partially: 'Partially',
     people: 'People',
+    creationDate: 'Created',
+    updateDate: 'Updated',
   },
 };
