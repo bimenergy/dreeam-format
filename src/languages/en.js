@@ -240,5 +240,6 @@ export default {
     people: 'People',
     creationDate: 'Created',
     updateDate: 'Updated',
+    userId: 'User',
   },
 };
