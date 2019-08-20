@@ -241,5 +241,6 @@ export default {
     creationDate: 'Created',
     updateDate: 'Updated',
     userId: 'User',
+    dataQuality: 'Quality',
   },
 };

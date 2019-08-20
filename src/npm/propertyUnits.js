@@ -80,4 +80,5 @@ export const propertyMap = {
   rotate: unitEnumeration.degreesFromNorth,
   roofAngle: unitEnumeration.degrees,
   numberOfOccupants: unitEnumeration.people,
+  dataQuality: unitEnumeration.percent,
 };
