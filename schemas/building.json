@@ -851,9 +851,9 @@
                 "dontknow"
               ]
             },
-            "energyCarrierYearOfConstruction": {
-              "$id": "energyCarrierYearOfConstruction",
-              "title": "Energy Carrier, Year of Construction",
+            "heatingSystemYearOfInstallation": {
+              "$id": "heatingSystemYearOfInstallation",
+              "title": "Heating system, year of installation",
               "description": "Construction year of energy carrier, if any",
               "type": "number",
               "min": 1800,

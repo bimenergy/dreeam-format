@@ -130,7 +130,7 @@ export default {
   heatingSystemType: true,
   heatingSystemIsDecentralised: true,
   energyCarrier: true,
-  energyCarrierYearOfConstruction: true,
+  heatingSystemYearOfInstallation: true,
   solarCells: true,
   transmission: {
     decimals: 1,

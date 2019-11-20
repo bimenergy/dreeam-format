@@ -112,7 +112,7 @@ export default {
     heatingSystemType: 'Heating system type',
     heatingSystemIsDecentralised: 'Heating system is decentralised',
     energyCarrier: 'Energy carrier',
-    energyCarrierYearOfConstruction: 'Energy carrier year of construction',
+    heatingSystemYearOfInstallation: 'Heating system year of installation',
     conditionHeatingSystem: 'Heating system condition',
     ventilationType: 'Ventilation type',
     exhaustAirFlow: 'Exhaust air flow',
