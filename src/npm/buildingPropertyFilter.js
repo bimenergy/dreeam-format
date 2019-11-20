@@ -53,7 +53,7 @@ export default {
   electricityLighting: {
     decimals: 1,
   },
-  electricityAppliences: {
+  electricityAppliances: {
     decimals: 1,
   },
   electricityAuxiliary: {

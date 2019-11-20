@@ -169,7 +169,7 @@
               "items": {"type": "number"},
               "description": "List order for storey heights above ground: first floor, second floor,..."
             },
-            "storeyHeightsBelowGround": { 
+            "storeyHeightsBelowGround": {
               "$id": "storeyHeightsBelowGround",
               "title": "Storey Heights Below Ground",
               "type": "array",
@@ -330,10 +330,10 @@
               "min": 0,
               "max": 1000000
             },
-            "electricityAppliences": {
-              "$id": "electricityAppliences",
-              "title": "Electricity for appliences",
-              "description": "Electricity for appliences, kWh per m2",
+            "electricityAppliances": {
+              "$id": "electricityAppliances",
+              "title": "Electricity for appliances",
+              "description": "Electricity for appliances, kWh per m2",
               "type": "number",
               "min": 0,
               "max": 1000000

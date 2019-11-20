@@ -10,7 +10,7 @@ export default {
       formats which often fail to be suitable for application development due to high flexibility and complexity. Links to documentations
       of gbXML: http://www.gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html and IFC: http://www.buildingsmart-tech.org/ifc/IFC4/final/html/
       (and version 2x3: http://www.buildingsmart-tech.org/ifc/IFC2x3/TC1/html/index.htm)`,
-    building: `The building is a central entity in the DREEAM format and follows several 
+    building: `The building is a central entity in the DREEAM format and follows several
       descriptions from open formats, such as CityGML, IFC, gbXML.
       The attributes object is used as the most simple bearer of information of a building, and is complemented
       with geometric descriptions both from GeoJSON (simpler geometry) and gbXML (detailed geometry). Note that the building
@@ -106,8 +106,8 @@ export default {
     hotWaterPerPerson: 'Hot water use per person',
     electricityLighting: 'Electricity for lighting',
     electricityLightingPerM2: 'Electricity for lighting per m²',
-    electricityAppliences: 'Electricity for appliences',
-    electricityAppliencesPerM2: 'Electricity for appliences per m²',
+    electricityAppliances: 'Electricity for appliances',
+    electricityAppliancesPerM2: 'Electricity for appliances per m²',
     electricityAuxiliary: 'Electricity for auxiliary',
     heatingSystemType: 'Heating system type',
     heatingSystemIsDecentralised: 'Heating system is decentralised',
