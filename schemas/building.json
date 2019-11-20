@@ -306,6 +306,14 @@
               "min": 0,
               "max": 1000
             },
+            "dataQuality": {
+              "$id": "dataQuality",
+              "title": "Percent of data quality",
+              "description": "Percent of data quality",
+              "type": "number",
+              "min": 0,
+              "max": 100
+            },
             "occupancyTimePerPerson": {
               "$id": "occupancyTimePerPerson",
               "title": "Occupancy Time",
