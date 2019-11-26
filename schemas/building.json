@@ -761,7 +761,7 @@
                 "district",
                 "heatPumpGeothermal",
                 "heatPumpAirAir",
-                "heatPumpExhaust",
+                "heatPumpExhaustAir",
                 "heatPumpAirWater",
                 "electricity",
                 "boiler"
